@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estudio Felipe · Servicios</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        font-family:
+          "Montserrat", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+      }
+      h1,
+      h2,
+      h3,
+      .font-serif {
+        font-family: "Montserrat", sans-serif;
+      }
+      body {
+        background-color: #fcf9f5;
+        color: #2f2a25;
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px) scale(0.97);
+        transition: all 1s cubic-bezier(0.2, 0.8, 0.3, 1);
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      /* Navbar */
+      .navbar-base {
+        background: rgba(44, 34, 28, 0.75) !important;
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255, 235, 210, 0.2);
+      }
+      .nav-scrolled {
+        background: rgba(34, 27, 22, 0.9) !important;
+        backdrop-filter: blur(16px);
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+      }
+      .nav-link {
+        color: #f0e4d5 !important;
+        font-weight: 500;
+        transition: color 0.2s;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+      .nav-link:hover {
+        color: #e6c9a8 !important;
+      }
+      .nav-btn {
+        background: rgba(201, 168, 124, 0.9);
+        color: white;
+        border: 1px solid rgba(255, 245, 230, 0.3);
+      }
+      .nav-btn:hover {
+        background: #b59573;
+      }
+      .gold-line {
+        width: 80px;
+        height: 2px;
+        background: linear-gradient(90deg, #c9a87c, #e8d3bd);
+        margin: 1.5rem 0;
+      }
+      .img-zoom {
+        overflow: hidden;
+      }
+      .img-zoom img {
+        transition: transform 1.2s ease;
+      }
+      .img-zoom:hover img {
+        transform: scale(1.08);
+      }
+      .btn-3d {
+        box-shadow: 0 20px 30px -10px rgba(150, 110, 70, 0.4);
+        transition: all 0.25s;
+      }
+      .btn-3d:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 30px 40px -12px #b48d62;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ===== NAVBAR ===== -->
+    <nav
+      id="navbar"
+      class="fixed w-full z-50 transition-all duration-500 navbar-base py-3 md:py-4"
+    >
+      <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        <a href="home.html" class="flex items-center">
+          <img
+            src="img/sombrero.png"
+            alt="EstudioFelipe"
+            class="h-10 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition"
+          />
+        </a>
+        <ul class="hidden md:flex space-x-8">
+          <li>
+            <a
+              href="home.html"
+              class="nav-link hover:!text-[#e6c9a8] transition px-1 py-1"
+              >Inicio</a
+            >
+          </li>
+          <li>
+            <a
+              href="servicios.html"
+              class="nav-link hover:!text-[#e6c9a8] transition px-1 py-1"
+              >Servicios</a
+            >
+          </li>
+          <li>
+            <a
+              href="galeria/index.html"
+              class="nav-link hover:!text-[#e6c9a8] transition px-1 py-1 font-semibold"
+              >Recuerdos</a
+            >
+          </li>
+          <li>
+            <a
+              href="estudio.html"
+              class="nav-link hover:!text-[#e6c9a8] transition px-1 py-1"
+              >Estudio</a
+            >
+          </li>
+          <li>
+            <a
+              href="contacto.html"
+              class="nav-link hover:!text-[#e6c9a8] transition px-1 py-1"
+              >Contacto</a
+            >
+          </li>
+        </ul>
+        <a
+          href="contacto.html"
+          class="hidden md:inline-block nav-btn text-white px-5 py-2 rounded-full text-sm hover:bg-[#b59573] transition shadow-lg"
+          ><i class="fas fa-camera mr-2"></i>Reservar</a
+        >
+        <div class="md:hidden text-2xl cursor-pointer text-[#f0e4d5]">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </nav>
+
+    <main class="pt-24">
+      <section class="py-16 px-6 bg-[#fcf9f5] min-h-screen">
+        <div class="max-w-7xl mx-auto">
+          <!-- Cabecera -->
+          <div class="text-center mb-16 reveal">
+            <span class="text-[#b59573] tracking-[0.3em] text-sm"
+              >SERVICIOS</span
+            >
+            <h2 class="text-6xl md:text-7xl font-serif text-[#3e332b] mt-2">
+              Lo que ofrecemos
+            </h2>
+            <div class="gold-line mx-auto"></div>
+            <p class="text-[#685e54] max-w-2xl mx-auto mt-6">
+              Descubre todos los servicios que tenemos para ti.
+            </p>
+          </div>
+
+          <!-- ===== SERVICIO DESTACADO: FOTOS EN ESTUDIO FOTOGRÁFICO ===== -->
+          <div class="max-w-5xl mx-auto mb-16 reveal">
+            <div
+              class="bg-gradient-to-br from-[#fcf9f5] to-[#f5ede3] border-2 border-[#c9a87c] rounded-4xl p-8 md:p-10 shadow-2xl relative overflow-hidden"
+            >
+              <!-- Iconos decorativos -->
+              <div
+                class="absolute top-0 right-0 w-32 h-32 bg-[#c9a87c] opacity-5 rounded-full -mt-10 -mr-10"
+              ></div>
+              <div
+                class="absolute bottom-0 left-0 w-24 h-24 bg-[#c9a87c] opacity-5 rounded-full -mb-8 -ml-8"
+              ></div>
+
+              <div class="relative z-10">
+                <div class="flex items-center gap-3 mb-4">
+                  <span
+                    class="bg-[#c9a87c] text-white px-4 py-1 rounded-full text-sm font-semibold flex items-center gap-1"
+                  >
+                    <i class="fas fa-star"></i> DESTACADO
+                  </span>
+                  <span class="text-[#b59573] font-medium"
+                    >Lo más solicitado</span
+                  >
+                </div>
+
+                <h2 class="text-4xl md:text-5xl font-serif text-[#3e332b] mb-4">
+                  Fotos en Estudio Fotográfico
+                </h2>
+                <p class="text-lg text-[#685e54] max-w-3xl mb-10">
+                  Sesiones profesionales en nuestro estudio equipado con luz
+                  natural y artificial, fondos versátiles y atrezo. Creamos el
+                  ambiente perfecto para cada ocasión. Elige la modalidad que
+                  mejor se adapte a lo que buscas:
+                </p>
+
+                <!-- Grid de 4 subservicios -->
+                <div
+                  class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+                >
+                  <!-- Al aire -->
+                  <div
+                    class="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/60 hover:shadow-xl transition-all group"
+                  >
+                    <div
+                      class="w-14 h-14 bg-[#c9a87c]/10 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-[#c9a87c] group-hover:text-white transition"
+                    >
+                      <i
+                        class="fas fa-tree text-2xl text-[#c9a87c] group-hover:text-white"
+                      ></i>
+                    </div>
+                    <h3 class="font-serif text-xl text-[#3e332b] mb-2">
+                      Al aire
+                    </h3>
+                    <p class="text-[#5b4f46] text-sm">
+                      Sesiones en exteriores con luz natural. Parques, playa,
+                      ciudad... el entorno que elijas.
+                    </p>
+                    <a
+                      href="colecciones/al-aire.html"
+                      class="inline-block mt-4 text-[#c9a87c] text-sm font-semibold hover:underline"
+                      >Ver recuerdos →</a
+                    >
+                  </div>
+
+                  <!-- Comunión -->
+                  <div
+                    class="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/60 hover:shadow-xl transition-all group"
+                  >
+                    <div
+                      class="w-14 h-14 bg-[#c9a87c]/10 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-[#c9a87c] group-hover:text-white transition"
+                    >
+                      <i
+                        class="fas fa-child text-2xl text-[#c9a87c] group-hover:text-white"
+                      ></i>
+                    </div>
+                    <h3 class="font-serif text-xl text-[#3e332b] mb-2">
+                      Comunión
+                    </h3>
+                    <p class="text-[#5b4f46] text-sm">
+                      Sesiones íntimas en estudio o exteriores. Reportaje del
+                      día especial y retratos familiares.
+                    </p>
+                    <a
+                      href="colecciones/comuniones.html"
+                      class="inline-block mt-4 text-[#c9a87c] text-sm font-semibold hover:underline"
+                      >Ver recuerdos →</a
+                    >
+                  </div>
+
+                  <!-- Cuento -->
+                  <div
+                    class="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/60 hover:shadow-xl transition-all group"
+                  >
+                    <div
+                      class="w-14 h-14 bg-[#c9a87c]/10 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-[#c9a87c] group-hover:text-white transition"
+                    >
+                      <i
+                        class="fas fa-hat-wizard text-2xl text-[#c9a87c] group-hover:text-white"
+                      ></i>
+                    </div>
+                    <h3 class="font-serif text-xl text-[#3e332b] mb-2">
+                      Cuento
+                    </h3>
+                    <p class="text-[#5b4f46] text-sm">
+                      Sesiones temáticas infantiles: princesas, piratas,
+                      fantasía... ¡Su imaginación hecha realidad!
+                    </p>
+                    <a
+                      href="colecciones/cuentos.html"
+                      class="inline-block mt-4 text-[#c9a87c] text-sm font-semibold hover:underline"
+                      >Ver recuerdos →</a
+                    >
+                  </div>
+
+                  <!-- Estudio -->
+                  <div
+                    class="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/60 hover:shadow-xl transition-all group"
+                  >
+                    <div
+                      class="w-14 h-14 bg-[#c9a87c]/10 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-[#c9a87c] group-hover:text-white transition"
+                    >
+                      <i
+                        class="fas fa-camera-retro text-2xl text-[#c9a87c] group-hover:text-white"
+                      ></i>
+                    </div>
+                    <h3 class="font-serif text-xl text-[#3e332b] mb-2">
+                      Estudio
+                    </h3>
+                    <p class="text-[#5b4f46] text-sm">
+                      Sesiones clásicas en nuestro estudio con fondos,
+                      iluminación profesional y atrezo.
+                    </p>
+                    <a
+                      href="colecciones/retrato.html"
+                      class="inline-block mt-4 text-[#c9a87c] text-sm font-semibold hover:underline"
+                      >Ver recuerdos →</a
+                    >
+                  </div>
+                </div>
+
+                <!-- Botón reserva -->
+                <div class="text-center mt-10">
+                  <a
+                    href="contacto.html"
+                    class="inline-block bg-[#c9a87c] hover:bg-[#b48d62] text-white px-8 py-3 rounded-full font-semibold transition-all shadow-lg btn-3d"
+                  >
+                    <i class="fas fa-calendar-alt mr-2"></i> Reserva tu sesión
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== SERVICIOS FIJOS: TARJETAS DE REGALO Y FOTOS DE CARNET ===== -->
+          <div class="grid md:grid-cols-2 gap-8 mt-16">
+            <!-- Tarjetas de regalo -->
+            <div
+              class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl reveal border border-white/60 overflow-hidden"
+            >
+              <div class="p-8">
+                <div class="flex items-center gap-4 mb-6">
+                  <div
+                    class="w-16 h-16 rounded-full overflow-hidden img-zoom flex-shrink-0"
+                  >
+                    <img
+                      src="img/Inicio/237A0011.jpg"
+                      alt="Tarjetas de regalo"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 class="font-serif text-3xl text-[#3e332b]">
+                    Tarjetas de regalo
+                  </h3>
+                </div>
+                <div class="border-t border-[#e1cfbc] pt-6">
+                  <div class="grid md:grid-cols-2 gap-6 items-center">
+                    <div>
+                      <img
+                        src="img/Inicio/237A0020.jpg"
+                        alt="Tarjetas de regalo"
+                        class="rounded-2xl shadow-lg img-zoom w-full h-48 object-cover"
+                      />
+                    </div>
+                    <div>
+                      <p class="text-[#5b4f46] mb-4">
+                        La tarjeta de regalo perfecta para cualquier ocasión.
+                        Elige el importe y el diseño, y deja que tus seres
+                        queridos disfruten de una sesión fotográfica profesional
+                        a su medida. Válida para todas nuestras sesiones:
+                        comuniones, infantil, retrato, embarazo y fotos de
+                        carnet. Un regalo único que captura momentos
+                        inolvidables.
+                      </p>
+                      <div class="flex gap-4 mt-4">
+                        <a
+                          href="colecciones/comuniones.html"
+                          class="bg-[#c9a87c] hover:bg-[#b48d62] text-white px-4 py-2 rounded-full text-sm font-semibold transition-all flex items-center gap-2"
+                        >
+                          <i class="fas fa-images"></i> Ver recuerdos
+                        </a>
+                        <a
+                          href="contacto.html"
+                          class="border-2 border-[#c9a87c] text-[#c9a87c] hover:bg-[#c9a87c] hover:text-white px-4 py-2 rounded-full text-sm font-semibold transition-all"
+                        >
+                          <i class="fas fa-calendar-alt"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Fotos de carnet -->
+            <div
+              class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl reveal border border-white/60 overflow-hidden"
+            >
+              <div class="p-8">
+                <div class="flex items-center gap-4 mb-6">
+                  <div
+                    class="w-16 h-16 rounded-full overflow-hidden img-zoom flex-shrink-0"
+                  >
+                    <img
+                      src="img/Inicio/237A0011.jpg"
+                      alt="Fotos de carnet"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 class="font-serif text-3xl text-[#3e332b]">
+                    Fotos de carnet
+                  </h3>
+                </div>
+                <div class="border-t border-[#e1cfbc] pt-6">
+                  <div class="grid md:grid-cols-2 gap-6 items-center">
+                    <div>
+                      <img
+                        src="img/Inicio/237A0020.jpg"
+                        alt="Fotos de carnet"
+                        class="rounded-2xl shadow-lg img-zoom w-full h-48 object-cover"
+                      />
+                    </div>
+                    <div>
+                      <p class="text-[#5b4f46] mb-4">
+                        Sesión exprés en estudio con iluminación profesional y
+                        fondo neutro. Cumplimos estrictamente con la normativa
+                        oficial para DNI, pasaporte, carnet de conducir y
+                        visados. Te asesoramos para que la imagen sea válida a
+                        la primera, evitando rechazos. Disponible en formato
+                        físico (papel mate de alta calidad) y digital (JPG listo
+                        para trámites online).
+                      </p>
+                      <div class="flex gap-4 mt-4">
+                        <a
+                          href="colecciones/comuniones.html"
+                          class="bg-[#c9a87c] hover:bg-[#b48d62] text-white px-4 py-2 rounded-full text-sm font-semibold transition-all flex items-center gap-2"
+                        >
+                          <i class="fas fa-images"></i> Ver recuerdos
+                        </a>
+                        <a
+                          href="contacto.html"
+                          class="border-2 border-[#c9a87c] text-[#c9a87c] hover:bg-[#c9a87c] hover:text-white px-4 py-2 rounded-full text-sm font-semibold transition-all"
+                        >
+                          <i class="fas fa-calendar-alt"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mensaje final -->
+          <div class="text-center mt-16 reveal">
+            <p class="text-[#8b755e]">
+              ¿No encuentras lo que buscas?
+              <a
+                href="contacto.html"
+                class="text-[#c9a87c] font-semibold underline"
+                >Contacta con nosotros</a
+              >
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-10 text-center text-[#6b5b4f] border-t border-[#e1cfbc]">
+      <p class="text-sm tracking-widest">
+        EL ESTUDIO DE FELIPE · CARTAGENA · REGIÓN DE MURCIA · ©2026
+      </p>
+      <p class="text-xs mt-2 text-[#8b755e]">
+        Una historia familiar desde 2007
+      </p>
+    </footer>
+
+    <script>
+      (function () {
+        // Navbar scroll effect
+        const navbar = document.getElementById("navbar");
+        window.addEventListener("scroll", function () {
+          if (window.scrollY > 80) {
+            navbar.classList.add("nav-scrolled");
+            navbar.classList.remove("navbar-base");
+          } else {
+            navbar.classList.remove("nav-scrolled");
+            navbar.classList.add("navbar-base");
+          }
+        });
+
+        // Reveal animation
+        const reveals = document.querySelectorAll(".reveal");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) entry.target.classList.add("active");
+            });
+          },
+          { threshold: 0.2 },
+        );
+        reveals.forEach((r) => observer.observe(r));
+      })();
+    </script>
+  </body>
+</html>

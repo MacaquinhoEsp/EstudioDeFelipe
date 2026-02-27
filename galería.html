@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estudio Felipe · Galería</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        font-family:
+          "Montserrat", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+      }
+      h1,
+      h2,
+      h3,
+      .font-serif {
+        font-family: "Montserrat", sans-serif;
+      }
+      body {
+        background-color: #fcf9f5;
+        color: #2f2a25;
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px) scale(0.97);
+        transition: all 1s cubic-bezier(0.2, 0.8, 0.3, 1);
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      /* Navbar */
+      .navbar-base {
+        background: rgba(44, 34, 28, 0.75) !important;
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255, 235, 210, 0.2);
+      }
+      .nav-scrolled {
+        background: rgba(34, 27, 22, 0.9) !important;
+        backdrop-filter: blur(16px);
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+      }
+      .nav-link {
+        color: #f0e4d5 !important;
+        font-weight: 500;
+        transition: color 0.2s;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+      .nav-link:hover {
+        color: #e6c9a8 !important;
+      }
+      .nav-btn {
+        background: rgba(201, 168, 124, 0.9);
+        color: white;
+        border: 1px solid rgba(255, 245, 230, 0.3);
+      }
+      .nav-btn:hover {
+        background: #b59573;
+      }
+      .gold-line {
+        width: 80px;
+        height: 2px;
+        background: linear-gradient(90deg, #c9a87c, #e8d3bd);
+        margin: 1.5rem 0;
+      }
+      .animation-delay-2000 {
+        animation-delay: 2s;
+      }
+
+      /* Estilos para las tarjetas de categorías */
+      .category-card {
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+      }
+      .category-card:hover {
+        border-color: #c9a87c;
+        transform: translateY(-5px);
+      }
+
+      /* Grid items */
+      .grid-item {
+        border-radius: 1.5rem;
+        overflow: hidden;
+        box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
+      }
+      .grid-item:hover {
+        box-shadow: 0 30px 40px -12px rgba(150, 110, 70, 0.4);
+      }
+      .img-zoom {
+        overflow: hidden;
+      }
+      .img-zoom img {
+        transition: transform 0.8s ease;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .img-zoom:hover img {
+        transform: scale(1.05);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav
+      id="navbar"
+      class="fixed w-full z-50 transition-all duration-500 navbar-base py-3 md:py-4"
+    >
+      <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        <a href="home.html" class="flex items-center">
+          <img
+            src="img/sombrero.png"
+            alt="EstudioFelipe"
+            class="h-10 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition"
+          />
+        </a>
+        <ul class="hidden md:flex space-x-8">
+          <li>
+            <a
+              href="home.html"
+              class="nav-link hover:!text-[#e6c9a8] transition px-1 py-1"
+              >Inicio</a
+            >
+          </li>
+          <li>
+            <a
+              href="servicios.html"
+              class="nav-link hover:!text-[#e6c9a8] transition px-1 py-1"
+              >Servicios</a
+            >
+          </li>
+          <li>
+            <a
+              href="galería.html"
+              class="nav-link hover:!text-[#e6c9a8] transition px-1 py-1 font-semibold"
+              >Recuerdos</a
+            >
+          </li>
+          <li>
+            <a
+              href="estudio.html"
+              class="nav-link hover:!text-[#e6c9a8] transition px-1 py-1"
+              >Estudio</a
+            >
+          </li>
+          <li>
+            <a
+              href="contacto.html"
+              class="nav-link hover:!text-[#e6c9a8] transition px-1 py-1"
+              >Contacto</a
+            >
+          </li>
+        </ul>
+        <a
+          href="contacto.html"
+          class="hidden md:inline-block nav-btn text-white px-5 py-2 rounded-full text-sm hover:bg-[#b59573] transition shadow-lg"
+          ><i class="fas fa-camera mr-2"></i>Reservar</a
+        >
+        <div class="md:hidden text-2xl cursor-pointer text-[#f0e4d5]">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </nav>
+
+    <main class="pt-24">
+      <!-- CABECERA -->
+      <section class="py-16 px-6 bg-[#fcf9f5] text-center">
+        <div class="max-w-4xl mx-auto reveal">
+          <span class="text-[#b59573] tracking-[0.3em] text-sm">RECUERDOS</span>
+          <h1 class="text-6xl md:text-7xl font-serif text-[#3e332b] mt-2">
+            Álbum visual
+          </h1>
+          <div class="gold-line mx-auto"></div>
+          <p class="text-[#685e54] text-lg mt-6">
+            Explora nuestros trabajos por categorías
+          </p>
+        </div>
+      </section>
+
+      <!-- CATEGORÍAS (TARJETAS DE ACCESO RÁPIDO) - AHORA 4 EN LÍNEA -->
+      <section class="px-6 pb-16">
+        <div class="max-w-6xl mx-auto">
+          <!-- Opcional: un poco más ancho para 4 columnas -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-4 gap-6 justify-items-center"
+          >
+            <!-- Comuniones -->
+            <a
+              href="colecciones/comuniones.html"
+              class="category-card bg-white/80 backdrop-blur-sm p-6 rounded-3xl shadow-xl text-center reveal w-full max-w-xs"
+            >
+              <div
+                class="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden img-zoom"
+              >
+                <img
+                  src="../img/Inicio/237A0011.jpg"
+                  alt="Comuniones"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <h3 class="font-serif text-xl text-[#3e332b]">Comuniones</h3>
+              <p class="text-sm text-[#8b755e] mt-2">Ver galería →</p>
+            </a>
+
+            <!-- Cuentos -->
+            <a
+              href="colecciones/cuentos.html"
+              class="category-card bg-white/80 backdrop-blur-sm p-6 rounded-3xl shadow-xl text-center reveal w-full max-w-xs"
+            >
+              <div
+                class="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden img-zoom"
+              >
+                <img
+                  src="../img/Inicio/237A0020.jpg"
+                  alt="Cuentos"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <h3 class="font-serif text-xl text-[#3e332b]">Cuentos</h3>
+              <p class="text-sm text-[#8b755e] mt-2">Ver galería →</p>
+            </a>
+
+            <!-- Al aire -->
+            <a
+              href="colecciones/al-aire.html"
+              class="category-card bg-white/80 backdrop-blur-sm p-6 rounded-3xl shadow-xl text-center reveal w-full max-w-xs"
+            >
+              <div
+                class="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden img-zoom"
+              >
+                <img
+                  src="../img/Inicio/237A0020.jpg"
+                  alt="Al aire"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <h3 class="font-serif text-xl text-[#3e332b]">Al aire</h3>
+              <p class="text-sm text-[#8b755e] mt-2">Ver galería →</p>
+            </a>
+
+            <!-- Retrato -->
+            <a
+              href="colecciones/retrato.html"
+              class="category-card bg-white/80 backdrop-blur-sm p-6 rounded-3xl shadow-xl text-center reveal w-full max-w-xs"
+            >
+              <div
+                class="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden img-zoom"
+              >
+                <img
+                  src="https://images.pexels.com/photos/3778866/pexels-photo-3778866.jpeg?auto=compress&cs=tinysrgb&w=200"
+                  alt="Estudio"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <h3 class="font-serif text-xl text-[#3e332b]">Retrato</h3>
+              <p class="text-sm text-[#8b755e] mt-2">Ver galería →</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== GALERÍA PRINCIPAL ===== -->
+      <!-- INSTRUCCIONES: 
+         - Las imágenes cuadradas usan md:col-span-4
+         - Las verticales (retrato) usan md:col-span-4 row-span-2
+         - Las horizontales (apaisadas) usan md:col-span-8
+         - Las muy alargadas (panorámicas) usan md:col-span-12
+    -->
+      <section class="px-6 pb-20">
+        <div class="max-w-7xl mx-auto">
+          <h2 class="text-4xl font-serif text-[#3e332b] mb-10 reveal">
+            Trabajos destacados
+          </h2>
+
+          <!-- GRID CON DIFERENTES FORMATOS -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[250px] md:auto-rows-[300px]"
+          >
+            <!-- Bloque 1: Dos verticales a la izquierda, una horizontal a la derecha -->
+
+            <!-- Foto vertical 1 (retrato) -->
+            <div class="md:col-span-4 row-span-2 grid-item img-zoom reveal">
+              <!-- RUTA: img/galeria/vertical-retrato-1.jpg -->
+              <img
+                src="https://images.pexels.com/photos/3778866/pexels-photo-3778866.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="Retrato vertical"
+                class="w-full h-full object-cover"
+              />
+              <div
+                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4 text-white opacity-0 hover:opacity-100 transition"
+              >
+                <span class="font-serif">Retrato íntimo</span>
+              </div>
+            </div>
+
+            <!-- Foto vertical 2 (comunión) -->
+            <div class="md:col-span-4 row-span-2 grid-item img-zoom reveal">
+              <!-- RUTA: img/galeria/comunion-vertical-1.jpg -->
+              <img
+                src="https://images.pexels.com/photos/5857595/pexels-photo-5857595.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="Comunión vertical"
+                class="w-full h-full object-cover"
+              />
+            </div>
+
+            <!-- Foto horizontal grande (ocupa el espacio de las dos verticales) -->
+            <div class="md:col-span-8 row-span-2 grid-item img-zoom reveal">
+              <!-- RUTA: img/galeria/boda-horizontal-1.jpg -->
+              <img
+                src="https://images.pexels.com/photos/1839818/pexels-photo-1839818.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                alt="Boda horizontal"
+                class="w-full h-full object-cover"
+              />
+            </div>
+
+            <!-- Bloque 2: Tres cuadradas -->
+
+            <!-- Cuadrada 1 -->
+            <div class="md:col-span-4 grid-item img-zoom reveal">
+              <!-- RUTA: img/galeria/infantil-cuadrada-1.jpg -->
+              <img
+                src="https://images.pexels.com/photos/2063803/pexels-photo-2063803.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="Infantil"
+                class="w-full h-full object-cover"
+              />
+            </div>
+
+            <!-- Cuadrada 2 -->
+            <div class="md:col-span-4 grid-item img-zoom reveal">
+              <!-- RUTA: img/galeria/comunion-cuadrada-1.jpg -->
+              <img
+                src="https://images.pexels.com/photos/4355346/pexels-photo-4355346.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="Comunión"
+                class="w-full h-full object-cover"
+              />
+            </div>
+
+            <!-- Cuadrada 3 -->
+            <div class="md:col-span-4 grid-item img-zoom reveal">
+              <!-- RUTA: img/galeria/familia-cuadrada-1.jpg -->
+              <img
+                src="https://images.pexels.com/photos/1570807/pexels-photo-1570807.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="Familia"
+                class="w-full h-full object-cover"
+              />
+            </div>
+
+            <!-- Bloque 3: Panorámica muy alargada (ocupa todo el ancho) -->
+            <div
+              class="md:col-span-12 grid-item img-zoom reveal"
+              style="height: 350px"
+            >
+              <!-- RUTA: img/galeria/panoramica-boda-1.jpg -->
+              <img
+                src="https://images.pexels.com/photos/3128407/pexels-photo-3128407.jpeg?auto=compress&cs=tinysrgb&w=1400"
+                alt="Panorámica boda"
+                class="w-full h-full object-cover"
+              />
+            </div>
+
+            <!-- Bloque 4: Una vertical + dos cuadradas -->
+
+            <!-- Vertical -->
+            <div class="md:col-span-4 row-span-2 grid-item img-zoom reveal">
+              <!-- RUTA: img/galeria/embarazo-vertical-1.jpg -->
+              <img
+                src="https://images.pexels.com/photos/3991609/pexels-photo-3991609.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="Embarazo"
+                class="w-full h-full object-cover"
+              />
+            </div>
+
+            <!-- Cuadrada 1 -->
+            <div class="md:col-span-4 grid-item img-zoom reveal">
+              <!-- RUTA: img/galeria/infantil-cuadrada-2.jpg -->
+              <img
+                src="https://images.pexels.com/photos/3283565/pexels-photo-3283565.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="Infantil"
+                class="w-full h-full object-cover"
+              />
+            </div>
+
+            <!-- Cuadrada 2 -->
+            <div class="md:col-span-4 grid-item img-zoom reveal">
+              <!-- RUTA: img/galeria/comunion-cuadrada-2.jpg -->
+              <img
+                src="https://images.pexels.com/photos/2292081/pexels-photo-2292081.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="Comunión"
+                class="w-full h-full object-cover"
+              />
+            </div>
+
+            <!-- Bloque 5: Dos horizontales juntas -->
+
+            <!-- Horizontal 1 -->
+            <div
+              class="md:col-span-6 grid-item img-zoom reveal"
+              style="height: 280px"
+            >
+              <!-- RUTA: img/galeria/boda-horizontal-2.jpg -->
+              <img
+                src="https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Boda"
+                class="w-full h-full object-cover"
+              />
+            </div>
+
+            <!-- Horizontal 2 -->
+            <div
+              class="md:col-span-6 grid-item img-zoom reveal"
+              style="height: 280px"
+            >
+              <!-- RUTA: img/galeria/familia-horizontal-1.jpg -->
+              <img
+                src="https://images.pexels.com/photos/2853958/pexels-photo-2853958.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Familia"
+                class="w-full h-full object-cover"
+              />
+            </div>
+
+            <!-- Bloque 6: Última panorámica -->
+            <div
+              class="md:col-span-12 grid-item img-zoom reveal"
+              style="height: 350px"
+            >
+              <!-- RUTA: img/galeria/panoramica-comunion-1.jpg -->
+              <img
+                src="https://images.pexels.com/photos/5857595/pexels-photo-5857595.jpeg?auto=compress&cs=tinysrgb&w=1400"
+                alt="Panorámica comunión"
+                class="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-10 text-center text-[#6b5b4f] border-t border-[#e1cfbc]">
+      <p class="text-sm tracking-widest">
+        EL ESTUDIO DE FELIPE · CARTAGENA · REGIÓN DE MURCIA · ©2026
+      </p>
+      <p class="text-xs mt-2 text-[#8b755e]">
+        Una historia familiar desde 2007
+      </p>
+      <div class="flex justify-center gap-6 mt-4 text-sm">
+        <a
+          href="aviso-legal.html"
+          class="text-[#8b755e] hover:text-[#c9a87c] transition"
+          >Aviso Legal</a
+        >
+        <a
+          href="política-privacidad.html"
+          class="text-[#8b755e] hover:text-[#c9a87c] transition"
+          >Política de Privacidad</a
+        >
+        <a
+          href="política-cookies.html"
+          class="text-[#8b755e] hover:text-[#c9a87c] transition"
+          >Política de Cookies</a
+        >
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        const navbar = document.getElementById("navbar");
+        window.addEventListener("scroll", function () {
+          if (window.scrollY > 80) {
+            navbar.classList.add("nav-scrolled");
+            navbar.classList.remove("navbar-base");
+          } else {
+            navbar.classList.remove("nav-scrolled");
+            navbar.classList.add("navbar-base");
+          }
+        });
+
+        const reveals = document.querySelectorAll(".reveal");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) entry.target.classList.add("active");
+            });
+          },
+          { threshold: 0.2 },
+        );
+        reveals.forEach((r) => observer.observe(r));
+      })();
+    </script>
+  </body>
+</html>
