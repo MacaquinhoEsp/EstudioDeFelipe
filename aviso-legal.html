@@ -9,21 +9,27 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Montserrat:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
     <style>
+      @font-face {
+        font-family: "Shree Devanagari 714";
+        src:
+          url("fonts/ShreeDev0714.woff2") format("woff2"),
+          url("fonts/ShreeDev0714.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
       * {
         font-family:
-          "Montserrat", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-          "Lucida Sans", Arial, sans-serif;
+          "Shree Devanagari 714", "Segoe UI", "Times New Roman", Times, serif;
       }
+
       h1,
       h2,
       h3,
       .font-serif {
-        font-family: "Montserrat", sans-serif;
+        font-family: "Shree Devanagari 714", "Times New Roman", Times, serif;
       }
       body {
         background-color: #fcf9f5;
@@ -79,13 +85,16 @@
       class="fixed w-full z-50 transition-all duration-500 navbar-base py-3 md:py-4"
     >
       <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        <!-- Logo -->
         <a href="home.html" class="flex items-center">
           <img
             src="img/sombrero.png"
-            alt="EstudioFelipe"
+            alt="El Estudio de Felipe - Fotógrafos en Cartagena"
             class="h-10 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition"
           />
         </a>
+
+        <!-- Menú de navegación (escritorio) -->
         <ul class="hidden md:flex space-x-8">
           <li>
             <a
@@ -111,7 +120,7 @@
           <li>
             <a
               href="estudio.html"
-              class="nav-link hover:!text-[#e6c9a8] transition px-1 py-1"
+              class="nav-link hover:!text-[#e6c9a8] transition px-1 py-1 font-semibold"
               >Estudio</a
             >
           </li>
@@ -123,16 +132,149 @@
             >
           </li>
         </ul>
-        <a
-          href="contacto.html"
-          class="hidden md:inline-block nav-btn text-white px-5 py-2 rounded-full text-sm hover:bg-[#b59573] transition shadow-lg"
-          ><i class="fas fa-camera mr-2"></i>Reservar</a
-        >
-        <div class="md:hidden text-2xl cursor-pointer text-[#f0e4d5]">
-          <i class="fas fa-bars"></i>
+
+        <!-- Zona derecha: botón reserva + redes + menú móvil -->
+        <div class="flex items-center gap-2 md:gap-4">
+          <!-- Botón reserva -->
+          <a
+            href="contacto.html"
+            class="nav-btn text-white px-5 py-2 rounded-full text-sm hover:bg-[#b59573] transition shadow-lg flex items-center"
+          >
+            <i class="fas fa-camera mr-2"></i>Reservar
+          </a>
+
+          <!-- Instagram -->
+          <a
+            href="https://www.instagram.com/elestudiodefelipe"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-10 h-10 bg-[#c9a87c]/10 rounded-full flex items-center justify-center text-xl text-[#c9a87c] hover:bg-[#c9a87c] hover:text-white transition"
+            aria-label="Instagram"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+
+          <!-- Facebook -->
+          <a
+            href="https://www.facebook.com/fotografiaelestudiodefelipe"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-10 h-10 bg-[#c9a87c]/10 rounded-full flex items-center justify-center text-xl text-[#c9a87c] hover:bg-[#c9a87c] hover:text-white transition"
+            aria-label="Facebook"
+          >
+            <i class="fab fa-facebook-f"></i>
+          </a>
+
+          <!-- Botón menú hamburguesa (móvil) -->
+          <button
+            id="menu-toggle"
+            class="md:hidden text-2xl cursor-pointer text-[#f0e4d5] focus:outline-none"
+            aria-label="Abrir menú"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
         </div>
       </div>
+
+      <!-- Menú móvil desplegable (oculto por defecto) -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden absolute top-full left-0 w-full bg-[#2d2620] backdrop-blur-sm border-t border-[#e6c9a8]/20 py-4 px-6 shadow-xl"
+      >
+        <ul class="flex flex-col space-y-4">
+          <li>
+            <a
+              href="home.html"
+              class="nav-link block hover:!text-[#e6c9a8] transition py-2"
+              >Inicio</a
+            >
+          </li>
+          <li>
+            <a
+              href="servicios.html"
+              class="nav-link block hover:!text-[#e6c9a8] transition py-2"
+              >Servicios</a
+            >
+          </li>
+          <li>
+            <a
+              href="galería.html"
+              class="nav-link block hover:!text-[#e6c9a8] transition py-2"
+              >Recuerdos</a
+            >
+          </li>
+          <li>
+            <a
+              href="estudio.html"
+              class="nav-link block hover:!text-[#e6c9a8] transition py-2"
+              >Estudio</a
+            >
+          </li>
+          <li>
+            <a
+              href="contacto.html"
+              class="nav-link block hover:!text-[#e6c9a8] transition py-2"
+              >Contacto</a
+            >
+          </li>
+          <li class="pt-2 border-t border-[#e6c9a8]/20">
+            <div class="flex gap-4">
+              <a
+                href="https://www.instagram.com/elestudiodefelipe"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[#e6c9a8] hover:text-white transition"
+                aria-label="Instagram"
+              >
+                <i class="fab fa-instagram text-2xl"></i>
+              </a>
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[#e6c9a8] hover:text-white transition"
+                aria-label="Facebook"
+              >
+                <i class="fab fa-facebook-f text-2xl"></i>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
     </nav>
+
+    <!-- Script para el menú móvil -->
+    <script>
+      (function () {
+        const menuToggle = document.getElementById("menu-toggle");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        if (menuToggle && mobileMenu) {
+          menuToggle.addEventListener("click", function () {
+            mobileMenu.classList.toggle("hidden");
+            // Cambiar icono entre bars y times (opcional)
+            const icon = this.querySelector("i");
+            if (icon.classList.contains("fa-bars")) {
+              icon.classList.remove("fa-bars");
+              icon.classList.add("fa-times");
+            } else {
+              icon.classList.remove("fa-times");
+              icon.classList.add("fa-bars");
+            }
+          });
+
+          // Cerrar menú al hacer clic en un enlace
+          mobileMenu.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", function () {
+              mobileMenu.classList.add("hidden");
+              const icon = menuToggle.querySelector("i");
+              icon.classList.remove("fa-times");
+              icon.classList.add("fa-bars");
+            });
+          });
+        }
+      })();
+    </script>
 
     <main class="pt-24">
       <section class="py-16 px-6">
@@ -154,16 +296,17 @@
           </p>
           <ul class="list-disc pl-6 text-[#5b4f46] mb-6">
             <li>
-              <strong>Nombre / Razón social:</strong> [Tu nombre completo o
-              nombre de la empresa]
+              <strong>Nombre / Razón social:</strong> El Estudio de Felipe
             </li>
-            <li><strong>NIF/CIF:</strong> [Tu NIF]</li>
+            <li><strong>NIF/CIF:</strong> 22999557V</li>
             <li>
-              <strong>Domicilio social:</strong> [Dirección completa, incluida
-              la ciudad y código postal]
+              <strong>Domicilio social:</strong> C. Peroniño, 19, 30205
+              Cartagena, Murcia
             </li>
-            <li><strong>Correo electrónico:</strong> [tuemail@ejemplo.com]</li>
-            <li><strong>Teléfono:</strong> [tu teléfono de contacto]</li>
+            <li>
+              <strong>Correo electrónico:</strong> info@elestudiodefelipe.com
+            </li>
+            <li><strong>Teléfono:</strong> +34 629 14 85 04</li>
             <li>
               <strong>Actividad:</strong> Estudio fotográfico y servicios
               relacionados.

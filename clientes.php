@@ -1,4 +1,5 @@
 <?php
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 session_start();
 if (!isset($_SESSION['admin']) || $_SESSION['admin'] !== true) {
     header('Location: admin.php');
@@ -12,6 +13,8 @@ if (isset($_POST['guardar'])) {
     $telefono = trim($_POST['telefono']);
     $email = trim($_POST['email']);
     $direccion = trim($_POST['direccion']);
+    $nombre_padre = trim($_POST['nombre_padre'] ?? '');
+    $nombre_madre = trim($_POST['nombre_madre'] ?? '');
     $como_conocio = trim($_POST['como_conocio']);
     $notas = trim($_POST['notas']);
     $servicio = trim($_POST['servicio'] ?? '');
@@ -19,8 +22,8 @@ if (isset($_POST['guardar'])) {
     $fecha_servicio = !empty($_POST['fecha_servicio']) ? $_POST['fecha_servicio'] : null;
 
     if (!empty($nombre)) {
-        $stmt = $conn->prepare("INSERT INTO clientes (nombre, telefono, email, direccion, como_conocio, notas, servicio, precio, fecha_servicio) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssssssds", $nombre, $telefono, $email, $direccion, $como_conocio, $notas, $servicio, $precio, $fecha_servicio);
+        $stmt = $conn->prepare("INSERT INTO clientes (nombre, telefono, email, direccion, nombre_padre, nombre_madre, como_conocio, notas, servicio, precio, fecha_servicio) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssssssssds", $nombre, $telefono, $email, $direccion, $nombre_padre, $nombre_madre, $como_conocio, $notas, $servicio, $precio, $fecha_servicio);
         $stmt->execute();
         $stmt->close();
         $mensaje = "Cliente añadido correctamente.";
@@ -55,6 +58,8 @@ if (isset($_POST['actualizar'])) {
     $telefono = trim($_POST['telefono']);
     $email = trim($_POST['email']);
     $direccion = trim($_POST['direccion']);
+    $nombre_padre = trim($_POST['nombre_padre'] ?? '');
+    $nombre_madre = trim($_POST['nombre_madre'] ?? '');
     $como_conocio = trim($_POST['como_conocio']);
     $notas = trim($_POST['notas']);
     $servicio = trim($_POST['servicio'] ?? '');
@@ -62,8 +67,8 @@ if (isset($_POST['actualizar'])) {
     $fecha_servicio = !empty($_POST['fecha_servicio']) ? $_POST['fecha_servicio'] : null;
 
     if (!empty($nombre)) {
-        $stmt = $conn->prepare("UPDATE clientes SET nombre=?, telefono=?, email=?, direccion=?, como_conocio=?, notas=?, servicio=?, precio=?, fecha_servicio=? WHERE id=?");
-        $stmt->bind_param("sssssssdsi", $nombre, $telefono, $email, $direccion, $como_conocio, $notas, $servicio, $precio, $fecha_servicio, $id);
+        $stmt = $conn->prepare("UPDATE clientes SET nombre=?, telefono=?, email=?, direccion=?, nombre_padre=?, nombre_madre=?, como_conocio=?, notas=?, servicio=?, precio=?, fecha_servicio=? WHERE id=?");
+        $stmt->bind_param("sssssssssdsi", $nombre, $telefono, $email, $direccion, $nombre_padre, $nombre_madre, $como_conocio, $notas, $servicio, $precio, $fecha_servicio, $id);
         $stmt->execute();
         $stmt->close();
         $mensaje = "Cliente actualizado.";
@@ -150,6 +155,16 @@ $resultados = $conn->query($sql);
                     <label class="block text-sm font-medium text-[#5b4f46] mb-1">Dirección</label>
                     <input type="text" name="direccion" value="<?= $editando ? htmlspecialchars($datos_edicion['direccion']) : '' ?>" class="w-full p-3 rounded-2xl border border-[#e2cfbb] bg-white/90 focus:outline-none focus:ring-2 focus:ring-[#c9a87c]">
                 </div>
+                <!-- NUEVOS CAMPOS: Nombre del padre y madre -->
+                <div class="md:col-span-1">
+                    <label class="block text-sm font-medium text-[#5b4f46] mb-1">Nombre del padre</label>
+                    <input type="text" name="nombre_padre" value="<?= $editando ? htmlspecialchars($datos_edicion['nombre_padre'] ?? '') : '' ?>" class="w-full p-3 rounded-2xl border border-[#e2cfbb] bg-white/90 focus:outline-none focus:ring-2 focus:ring-[#c9a87c]">
+                </div>
+                <div class="md:col-span-1">
+                    <label class="block text-sm font-medium text-[#5b4f46] mb-1">Nombre de la madre</label>
+                    <input type="text" name="nombre_madre" value="<?= $editando ? htmlspecialchars($datos_edicion['nombre_madre'] ?? '') : '' ?>" class="w-full p-3 rounded-2xl border border-[#e2cfbb] bg-white/90 focus:outline-none focus:ring-2 focus:ring-[#c9a87c]">
+                </div>
+                <div class="md:col-span-1"></div> <!-- para mantener el grid -->
                 <div>
                     <label class="block text-sm font-medium text-[#5b4f46] mb-1">¿Cómo nos conoció?</label>
                     <input type="text" name="como_conocio" value="<?= $editando ? htmlspecialchars($datos_edicion['como_conocio']) : '' ?>" class="w-full p-3 rounded-2xl border border-[#e2cfbb] bg-white/90 focus:outline-none focus:ring-2 focus:ring-[#c9a87c]">
@@ -189,7 +204,7 @@ $resultados = $conn->query($sql);
             </form>
         </div>
 
-        <!-- Buscador y filtros -->
+        <!-- Buscador y filtros (sin cambios) -->
         <div class="mb-4 grid grid-cols-1 md:grid-cols-3 gap-4">
             <form method="GET" action="clientes.php" class="md:col-span-2 flex gap-2">
                 <input type="text" name="buscar" value="<?= htmlspecialchars($busqueda) ?>" placeholder="Buscar por nombre, email o teléfono..." class="flex-1 p-3 rounded-2xl border border-[#e2cfbb] bg-white/90 focus:outline-none focus:ring-2 focus:ring-[#c9a87c]">
@@ -216,7 +231,7 @@ $resultados = $conn->query($sql);
             </form>
         </div>
 
-        <!-- Botón de exportar emails -->
+        <!-- Botón de exportar emails (sin cambios) -->
         <div class="mb-4 text-right">
             <a href="exportar_emails.php?buscar=<?= urlencode($busqueda) ?>&filtro_servicio=<?= urlencode($filtro_servicio) ?>" 
                class="inline-block bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-semibold transition-all shadow-lg">
@@ -224,7 +239,7 @@ $resultados = $conn->query($sql);
             </a>
         </div>
 
-        <!-- Listado de clientes -->
+        <!-- Listado de clientes (con nuevas columnas para los padres) -->
         <div class="bg-white/80 backdrop-blur-sm p-6 rounded-3xl shadow-xl border border-white/60 overflow-x-auto">
             <table class="w-full text-sm text-left">
                 <thead class="text-xs uppercase tracking-wider text-[#b59573]">
@@ -233,6 +248,8 @@ $resultados = $conn->query($sql);
                         <th class="px-4 py-3">Nombre</th>
                         <th class="px-4 py-3">Teléfono</th>
                         <th class="px-4 py-3">Email</th>
+                        <th class="px-4 py-3">Padre</th>   <!-- Nueva columna -->
+                        <th class="px-4 py-3">Madre</th>   <!-- Nueva columna -->
                         <th class="px-4 py-3">Servicio</th>
                         <th class="px-4 py-3">Precio</th>
                         <th class="px-4 py-3">Fecha servicio</th>
@@ -248,6 +265,8 @@ $resultados = $conn->query($sql);
                                 <td class="px-4 py-3 font-medium"><?= htmlspecialchars($row['nombre']) ?></td>
                                 <td class="px-4 py-3"><?= htmlspecialchars($row['telefono'] ?? '-') ?></td>
                                 <td class="px-4 py-3"><?= htmlspecialchars($row['email'] ?? '-') ?></td>
+                                <td class="px-4 py-3"><?= htmlspecialchars($row['nombre_padre'] ?? '-') ?></td>  <!-- Mostrar padre -->
+                                <td class="px-4 py-3"><?= htmlspecialchars($row['nombre_madre'] ?? '-') ?></td>  <!-- Mostrar madre -->
                                 <td class="px-4 py-3"><?= htmlspecialchars($row['servicio'] ?? '-') ?></td>
                                 <td class="px-4 py-3"><?= $row['precio'] ? number_format($row['precio'],2) . ' €' : '-' ?></td>
                                 <td class="px-4 py-3"><?= $row['fecha_servicio'] ? date('d/m/Y', strtotime($row['fecha_servicio'])) : '-' ?></td>
@@ -259,7 +278,7 @@ $resultados = $conn->query($sql);
                             </tr>
                         <?php endwhile; ?>
                     <?php else: ?>
-                        <tr><td colspan="9" class="text-center py-6 text-[#8b755e]">No hay clientes registrados.</td></tr>
+                        <tr><td colspan="11" class="text-center py-6 text-[#8b755e]">No hay clientes registrados.</td></tr> <!-- colspan actualizado a 11 -->
                     <?php endif; ?>
                 </tbody>
             </table>

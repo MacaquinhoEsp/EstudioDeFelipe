@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Shree Devanagari 714';
+    src: url('ShreeDev0714.woff2') format('woff2'),
+        url('ShreeDev0714.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

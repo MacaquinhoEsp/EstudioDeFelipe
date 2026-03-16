@@ -3,27 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Etereo · Contacto</title>
+    <meta
+      name="description"
+      content="¿Quieres reservar una sesión de fotos en Cartagena? Escríbenos, llámanos o visítanos. Estudio Felipe, tu estudio de fotografía familiar."
+    />
+    <title>
+      Contacta con El Estudio de Felipe | Fotógrafos en Cartagena | Reserva tu
+      sesión
+    </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Montserrat:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
     <style>
+      @font-face {
+        font-family: "MiBebas";
+        src: url("fonts/BebasNeue-Regular.woff2") format("woff2");
+        font-weight: normal;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Shree Devanagari 714";
+        src:
+          url("fonts/ShreeDev0714.woff2") format("woff2"),
+          url("fonts/ShreeDev0714.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
       * {
         font-family:
-          "Montserrat", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-          "Lucida Sans", Arial, sans-serif;
+          "Shree Devanagari 714", "Segoe UI", "Times New Roman", Times, serif;
       }
+
       h1,
       h2,
       h3,
       .font-serif {
-        font-family: "Montserrat", sans-serif;
+        font-family: "MiBebas", "Shree Devanagari 714", serif !important;
       }
       body {
         background-color: #fcf9f5;
@@ -90,22 +109,69 @@
         color: #ffffff !important;
         font-weight: 600;
       }
+      /* Botón flotante de WhatsApp */
+      .whatsapp-float {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background-color: #25d366;
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        text-align: center;
+        font-size: 30px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+      .whatsapp-float:hover {
+        background-color: #128c7e;
+        transform: scale(1.1);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        color: white;
+      }
+      @media (max-width: 768px) {
+        .whatsapp-float {
+          width: 50px;
+          height: 50px;
+          font-size: 25px;
+          bottom: 20px;
+          right: 20px;
+        }
+      }
     </style>
   </head>
   <body>
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+    <a
+      href="https://wa.me/+34629148504?text=Hola%21%20Me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n%20sobre%20las%20sesiones%20fotogr%C3%A1ficas"
+      class="whatsapp-float"
+      target="_blank"
+      title="Contáctanos por WhatsApp"
+    >
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- NAVBAR -->
     <nav
       id="navbar"
       class="fixed w-full z-50 transition-all duration-500 navbar-base py-3 md:py-4"
     >
       <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <!-- Logo como imagen con tamaño fijo pequeño -->
+        <!-- Logo -->
         <a href="home.html" class="flex items-center">
           <img
             src="img/sombrero.png"
-            alt="EstudioFelipe"
+            alt="El Estudio de Felipe - Fotógrafos en Cartagena"
             class="h-10 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition"
           />
         </a>
+
+        <!-- Menú de navegación (escritorio) -->
         <ul class="hidden md:flex space-x-8">
           <li>
             <a
@@ -124,14 +190,14 @@
           <li>
             <a
               href="galería.html"
-              class="nav-link hover:!text-[#e6c9a8] transition px-1 py-1 font-semibold"
+              class="nav-link hover:!text-[#e6c9a8] transition px-1 py-1"
               >Recuerdos</a
             >
           </li>
           <li>
             <a
               href="estudio.html"
-              class="nav-link hover:!text-[#e6c9a8] transition px-1 py-1"
+              class="nav-link hover:!text-[#e6c9a8] transition px-1 py-1 font-semibold"
               >Estudio</a
             >
           </li>
@@ -143,78 +209,284 @@
             >
           </li>
         </ul>
-        <a
-          href="contacto.html"
-          class="hidden md:inline-block nav-btn text-white px-5 py-2 rounded-full text-sm hover:bg-[#b59573] transition shadow-lg"
-          ><i class="fas fa-camera mr-2"></i>Reservar</a
-        >
-        <div class="md:hidden text-2xl cursor-pointer text-[#f0e4d5]">
-          <i class="fas fa-bars"></i>
+
+        <!-- Zona derecha: botón reserva + redes + menú móvil -->
+        <div class="flex items-center gap-2 md:gap-4">
+          <!-- Botón reserva -->
+          <a
+            href="contacto.html"
+            class="nav-btn text-white px-5 py-2 rounded-full text-sm hover:bg-[#b59573] transition shadow-lg flex items-center"
+          >
+            <i class="fas fa-camera mr-2"></i>Reservar
+          </a>
+
+          <!-- Instagram -->
+          <a
+            href="https://www.instagram.com/elestudiodefelipe"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-10 h-10 bg-[#c9a87c]/10 rounded-full flex items-center justify-center text-xl text-[#c9a87c] hover:bg-[#c9a87c] hover:text-white transition"
+            aria-label="Instagram"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+
+          <!-- Facebook -->
+          <a
+            href="https://www.facebook.com/fotografiaelestudiodefelipe"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-10 h-10 bg-[#c9a87c]/10 rounded-full flex items-center justify-center text-xl text-[#c9a87c] hover:bg-[#c9a87c] hover:text-white transition"
+            aria-label="Facebook"
+          >
+            <i class="fab fa-facebook-f"></i>
+          </a>
+
+          <!-- Botón menú hamburguesa (móvil) -->
+          <button
+            id="menu-toggle"
+            class="md:hidden text-2xl cursor-pointer text-[#f0e4d5] focus:outline-none"
+            aria-label="Abrir menú"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
         </div>
+      </div>
+
+      <!-- Menú móvil desplegable (oculto por defecto) -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden absolute top-full left-0 w-full bg-[#2d2620] backdrop-blur-sm border-t border-[#e6c9a8]/20 py-4 px-6 shadow-xl"
+      >
+        <ul class="flex flex-col space-y-4">
+          <li>
+            <a
+              href="home.html"
+              class="nav-link block hover:!text-[#e6c9a8] transition py-2"
+              >Inicio</a
+            >
+          </li>
+          <li>
+            <a
+              href="servicios.html"
+              class="nav-link block hover:!text-[#e6c9a8] transition py-2"
+              >Servicios</a
+            >
+          </li>
+          <li>
+            <a
+              href="galería.html"
+              class="nav-link block hover:!text-[#e6c9a8] transition py-2"
+              >Recuerdos</a
+            >
+          </li>
+          <li>
+            <a
+              href="estudio.html"
+              class="nav-link block hover:!text-[#e6c9a8] transition py-2"
+              >Estudio</a
+            >
+          </li>
+          <li>
+            <a
+              href="contacto.html"
+              class="nav-link block hover:!text-[#e6c9a8] transition py-2"
+              >Contacto</a
+            >
+          </li>
+          <li class="pt-2 border-t border-[#e6c9a8]/20">
+            <div class="flex gap-4">
+              <a
+                href="https://www.instagram.com/elestudiodefelipe"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[#e6c9a8] hover:text-white transition"
+                aria-label="Instagram"
+              >
+                <i class="fab fa-instagram text-2xl"></i>
+              </a>
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[#e6c9a8] hover:text-white transition"
+                aria-label="Facebook"
+              >
+                <i class="fab fa-facebook-f text-2xl"></i>
+              </a>
+            </div>
+          </li>
+        </ul>
       </div>
     </nav>
 
+    <!-- Script para el menú móvil -->
+    <script>
+      (function () {
+        const menuToggle = document.getElementById("menu-toggle");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        if (menuToggle && mobileMenu) {
+          menuToggle.addEventListener("click", function () {
+            mobileMenu.classList.toggle("hidden");
+            // Cambiar icono entre bars y times (opcional)
+            const icon = this.querySelector("i");
+            if (icon.classList.contains("fa-bars")) {
+              icon.classList.remove("fa-bars");
+              icon.classList.add("fa-times");
+            } else {
+              icon.classList.remove("fa-times");
+              icon.classList.add("fa-bars");
+            }
+          });
+
+          // Cerrar menú al hacer clic en un enlace
+          mobileMenu.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", function () {
+              mobileMenu.classList.add("hidden");
+              const icon = menuToggle.querySelector("i");
+              icon.classList.remove("fa-times");
+              icon.classList.add("fa-bars");
+            });
+          });
+        }
+      })();
+    </script>
+
     <main class="pt-24">
-      <section class="py-16 px-6 bg-[#fcf9f5] min-h-screen flex items-center">
-        <div
-          class="max-w-4xl mx-auto bg-white/80 backdrop-blur-sm rounded-4xl p-10 md:p-16 shadow-2xl reveal border border-white/60"
-        >
-          <div class="text-center mb-12">
-            <h2 class="text-5xl font-serif text-[#3e332b]">¿Hablamos?</h2>
-            <p class="text-[#685e54] mt-4">
-              Cuéntanos qué necesitas, te responderemos en menos de 24h
-            </p>
+      <section class="py-16 px-6 bg-[#fcf9f5] min-h-screen">
+        <div class="max-w-4xl mx-auto">
+          <!-- Formulario de contacto (existente) -->
+          <div
+            class="bg-white/80 backdrop-blur-sm rounded-4xl p-10 md:p-16 shadow-2xl reveal border border-white/60 mb-12"
+          >
+            <div class="text-center mb-12">
+              <h2 class="text-5xl font-serif text-[#3e332b]">¿Hablamos?</h2>
+              <p class="text-[#685e54] mt-4">
+                Cuéntanos qué necesitas, te responderemos en menos de 24h
+              </p>
+            </div>
+
+            <!-- FORMULARIO MODIFICADO PARA PHP -->
+            <form
+              action="guardar_presupuesto.php"
+              method="POST"
+              class="grid md:grid-cols-2 gap-6"
+            >
+              <input
+                type="text"
+                name="nombre"
+                placeholder="Nombre"
+                required
+                class="p-4 rounded-2xl border border-[#e2cfbb] bg-white/90 focus:outline-none focus:ring-2 focus:ring-[#c9a87c]"
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+                class="p-4 rounded-2xl border border-[#e2cfbb] bg-white/90 focus:outline-none focus:ring-2 focus:ring-[#c9a87c]"
+              />
+              <input
+                type="text"
+                name="telefono"
+                placeholder="Teléfono (opcional)"
+                class="p-4 rounded-2xl border border-[#e2cfbb] bg-white/90 focus:outline-none focus:ring-2 focus:ring-[#c9a87c] md:col-span-2"
+              />
+              <select
+                name="tipo_sesion"
+                class="p-4 rounded-2xl border border-[#e2cfbb] bg-white/90 focus:outline-none focus:ring-2 focus:ring-[#c9a87c] md:col-span-2"
+              >
+                <option value="">Tipo de sesión</option>
+                <option value="Boda">Boda</option>
+                <option value="Comunión">Comunión</option>
+                <option value="Infantil">Infantil</option>
+                <option value="Evento">Evento</option>
+              </select>
+              <textarea
+                name="mensaje"
+                placeholder="Mensaje"
+                rows="4"
+                class="p-4 rounded-2xl border border-[#e2cfbb] bg-white/90 focus:outline-none focus:ring-2 focus:ring-[#c9a87c] md:col-span-2"
+              ></textarea>
+              <button
+                type="submit"
+                class="md:col-span-2 bg-[#c9a87c] hover:bg-[#b48d62] text-white py-4 rounded-2xl text-lg font-semibold transition-all shadow-xl flex items-center justify-center gap-3 btn-3d"
+              >
+                <i class="fas fa-paper-plane"></i> Enviar mensaje
+              </button>
+            </form>
           </div>
 
-          <!-- FORMULARIO MODIFICADO PARA PHP -->
-          <form
-            action="guardar_presupuesto.php"
-            method="POST"
-            class="grid md:grid-cols-2 gap-6"
-          >
-            <input
-              type="text"
-              name="nombre"
-              placeholder="Nombre"
-              required
-              class="p-4 rounded-2xl border border-[#e2cfbb] bg-white/90 focus:outline-none focus:ring-2 focus:ring-[#c9a87c]"
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              required
-              class="p-4 rounded-2xl border border-[#e2cfbb] bg-white/90 focus:outline-none focus:ring-2 focus:ring-[#c9a87c]"
-            />
-            <input
-              type="text"
-              name="telefono"
-              placeholder="Teléfono (opcional)"
-              class="p-4 rounded-2xl border border-[#e2cfbb] bg-white/90 focus:outline-none focus:ring-2 focus:ring-[#c9a87c] md:col-span-2"
-            />
-            <select
-              name="tipo_sesion"
-              class="p-4 rounded-2xl border border-[#e2cfbb] bg-white/90 focus:outline-none focus:ring-2 focus:ring-[#c9a87c] md:col-span-2"
+          <!-- NUEVA SECCIÓN: MAPA Y CONTACTO DIRECTO -->
+          <div class="grid md:grid-cols-2 gap-8 reveal">
+            <!-- Información de contacto y horarios -->
+            <div
+              class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/60"
             >
-              <option value="">Tipo de sesión</option>
-              <option value="Boda">Boda</option>
-              <option value="Comunión">Comunión</option>
-              <option value="Infantil">Infantil</option>
-              <option value="Evento">Evento</option>
-            </select>
-            <textarea
-              name="mensaje"
-              placeholder="Mensaje"
-              rows="4"
-              class="p-4 rounded-2xl border border-[#e2cfbb] bg-white/90 focus:outline-none focus:ring-2 focus:ring-[#c9a87c] md:col-span-2"
-            ></textarea>
-            <button
-              type="submit"
-              class="md:col-span-2 bg-[#c9a87c] hover:bg-[#b48d62] text-white py-4 rounded-2xl text-lg font-semibold transition-all shadow-xl flex items-center justify-center gap-3 btn-3d"
+              <h3 class="text-2xl font-serif text-[#3e332b] mb-6">Visítanos</h3>
+              <div class="space-y-4 text-[#685e54]">
+                <div class="flex items-start gap-3">
+                  <i class="fas fa-map-pin text-[#c9a87c] text-xl mt-1"></i>
+                  <div>
+                    <p class="font-semibold">El Estudio de Felipe</p>
+                    <p>Calle Peroniño, 19</p>
+                    <p>30205 Cartagena Murcia, España</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3">
+                  <i class="fas fa-phone-alt text-[#c9a87c]"></i>
+                  <a
+                    href="tel:+34 629 14 85 04"
+                    class="hover:text-[#c9a87c] transition"
+                    >+34 629 14 85 04</a
+                  >
+                </div>
+                <div class="flex items-center gap-3">
+                  <i class="fas fa-envelope text-[#c9a87c]"></i>
+                  <a
+                    href="mailto:info@estudiofelipe.com"
+                    class="hover:text-[#c9a87c] transition"
+                    >info@estudiofelipe.com</a
+                  >
+                </div>
+                <div class="flex items-center gap-3">
+                  <i class="fas fa-clock text-[#c9a87c]"></i>
+                  <div>
+                    <p>Lunes a Viernes: 10:00 - 13:30 y 17:00 - 20:00</p>
+                    <p>Sábados: 10:00 - 13:30 (con cita previa)</p>
+                    <p>Domingos y festivos: Cerrado</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Botón de WhatsApp directo (adicional) -->
+              <a
+                href="https://wa.me/+34629148504?text=Hola%21%20Me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n%20sobre%20las%20sesiones%20fotogr%C3%A1ficas"
+                target="_blank"
+                class="inline-flex items-center gap-2 mt-6 bg-[#25D366] hover:bg-[#128C7E] text-white px-6 py-3 rounded-full font-semibold transition-all shadow-lg btn-3d"
+              >
+                <i class="fab fa-whatsapp text-xl"></i>
+                Escríbenos por WhatsApp
+              </a>
+            </div>
+
+            <!-- MAPA DE GOOGLE MAPS -->
+            <div
+              class="bg-white/80 backdrop-blur-sm rounded-3xl p-4 shadow-xl border border-white/60 h-[400px] overflow-hidden"
             >
-              <i class="fas fa-paper-plane"></i> Enviar mensaje
-            </button>
-          </form>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3160.8877818178003!2d-0.9963!3d37.6048!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd63423a298de54b%3A0xbe512365a6dcee28!2sC.%20Peroni%C3%B1o%2C%2019%2C%2030205%20Cartagena%2C%20Murcia!5e0!3m2!1ses!2ses!4v1772712400703!5m2!1ses!2ses"
+                width="100%"
+                height="100%"
+                style="border: 0; border-radius: 1rem"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Ubicación de El Estudio de Felipe en Cartagena"
+              ></iframe>
+            </div>
+          </div>
         </div>
       </section>
     </main>

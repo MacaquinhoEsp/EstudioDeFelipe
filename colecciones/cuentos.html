@@ -3,41 +3,61 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cuentos · Estudio Felipe</title>
+    <title>
+      Sesiones de Cuentos en Cartagena | Fotografía Temática Infantil | El
+      Estudio de Felipe
+    </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Montserrat:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
     <style>
+      @font-face {
+        font-family: "MiBebas";
+        src: url("../fonts/BebasNeue-Regular.woff2") format("woff2");
+        font-weight: normal;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Shree Devanagari 714";
+        src:
+          url("../fonts/ShreeDev0714.woff2") format("woff2"),
+          url("../fonts/ShreeDev0714.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
       * {
         font-family:
-          "Montserrat", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-          "Lucida Sans", Arial, sans-serif;
+          "Shree Devanagari 714", "Segoe UI", "Times New Roman", Times, serif;
       }
       h1,
       h2,
       h3,
       .font-serif {
-        font-family: "Montserrat", sans-serif;
+        font-family: "MiBebas", "Shree Devanagari 714", serif !important;
       }
       body {
         background-color: #fcf9f5;
         color: #2f2a25;
       }
-      .reveal {
+
+      @keyframes fadeScale {
+        0% {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      .fade-scale {
         opacity: 0;
-        transform: translateY(40px) scale(0.97);
-        transition: all 1s cubic-bezier(0.2, 0.8, 0.3, 1);
+        animation: fadeScale 0.8s ease forwards;
       }
-      .reveal.active {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
+
       .navbar-base {
         background: rgba(44, 34, 28, 0.75) !important;
         backdrop-filter: blur(12px);
@@ -65,28 +85,154 @@
       .nav-btn:hover {
         background: #b59573;
       }
-      .gold-line {
-        width: 80px;
-        height: 2px;
-        background: linear-gradient(90deg, #c9a87c, #e8d3bd);
-        margin: 1.5rem 0;
-      }
-      .img-zoom {
+
+      .hero-slider {
+        position: relative;
+        height: 70vh;
+        min-height: 500px;
         overflow: hidden;
       }
-      .img-zoom img {
-        transition: transform 0.8s ease;
+      .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: opacity 1.5s ease-in-out;
+      }
+      .slide.active {
+        opacity: 1;
+      }
+      .slide::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(44, 34, 28, 0.6) 0%,
+          rgba(44, 34, 28, 0.3) 100%
+        );
+      }
+
+      /* Texto del slider en esquina inferior izquierda */
+      .hero-content {
+        position: absolute;
+        bottom: 30px;
+        left: 30px;
+        z-index: 10;
+        color: white;
+        text-align: left;
+        max-width: 80%;
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(3px);
+        padding: 1.5rem 2rem;
+        border-radius: 1rem;
+        border-left: 4px solid #c9a87c;
+      }
+
+      .gold-line-light {
+        width: 60px;
+        height: 2px;
+        background: linear-gradient(90deg, #e6c9a8, #fff);
+        margin: 0.8rem 0;
+      }
+
+      .slider-dots {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        z-index: 20;
+      }
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .dot.active {
+        background: #c9a87c;
+        transform: scale(1.3);
+      }
+
+      /* Ajuste para móvil */
+      @media (max-width: 768px) {
+        .hero-content {
+          bottom: 15px;
+          left: 15px;
+          padding: 1rem;
+          max-width: 90%;
+        }
+        .hero-content h1 {
+          font-size: 2rem;
+        }
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        margin-top: 3rem;
+      }
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 1.5rem;
+        box-shadow: 0 15px 25px -8px rgba(0, 0, 0, 0.1);
+        transition: all 0.5s cubic-bezier(0.2, 0.9, 0.3, 1);
+        cursor: pointer;
+        aspect-ratio: 1 / 1;
+      }
+      .gallery-item img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        transition: transform 1s ease;
       }
-      .img-zoom:hover img {
-        transform: scale(1.05);
+      .gallery-item:hover {
+        box-shadow: 0 25px 35px -12px rgba(150, 110, 70, 0.4);
+        transform: translateY(-6px);
       }
-      .grid-item {
-        border-radius: 1.5rem;
-        overflow: hidden;
-        box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.15);
+      .gallery-item:hover img {
+        transform: scale(1.08);
+      }
+
+      .gallery-item.wide {
+        grid-column: span 2;
+        aspect-ratio: 2 / 1;
+      }
+      .gallery-item.tall {
+        grid-row: span 2;
+        aspect-ratio: 1 / 2;
+      }
+      .gallery-item.big {
+        grid-column: span 2;
+        grid-row: span 2;
+        aspect-ratio: 1 / 1;
+      }
+
+      @media (max-width: 768px) {
+        .gallery-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1rem;
+        }
+        .gallery-item.wide,
+        .gallery-item.tall,
+        .gallery-item.big {
+          grid-column: span 2;
+          grid-row: span 1;
+          aspect-ratio: 1 / 1;
+        }
       }
     </style>
   </head>
@@ -97,13 +243,16 @@
       class="fixed w-full z-50 transition-all duration-500 navbar-base py-3 md:py-4"
     >
       <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        <!-- Logo -->
         <a href="../home.html" class="flex items-center">
           <img
             src="../img/sombrero.png"
-            alt="EstudioFelipe"
+            alt="El Estudio de Felipe - Fotógrafos en Cartagena"
             class="h-10 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition"
           />
         </a>
+
+        <!-- Menú de navegación (escritorio) -->
         <ul class="hidden md:flex space-x-8">
           <li>
             <a
@@ -122,14 +271,14 @@
           <li>
             <a
               href="../galería.html"
-              class="nav-link hover:!text-[#e6c9a8] transition px-1 py-1 font-semibold"
+              class="nav-link hover:!text-[#e6c9a8] transition px-1 py-1"
               >Recuerdos</a
             >
           </li>
           <li>
             <a
               href="../estudio.html"
-              class="nav-link hover:!text-[#e6c9a8] transition px-1 py-1"
+              class="nav-link hover:!text-[#e6c9a8] transition px-1 py-1 font-semibold"
               >Estudio</a
             >
           </li>
@@ -141,141 +290,588 @@
             >
           </li>
         </ul>
-        <a
-          href="../contacto.html"
-          class="hidden md:inline-block nav-btn text-white px-5 py-2 rounded-full text-sm hover:bg-[#b59573] transition shadow-lg"
-          ><i class="fas fa-camera mr-2"></i>Reservar</a
-        >
-        <div class="md:hidden text-2xl cursor-pointer text-[#f0e4d5]">
-          <i class="fas fa-bars"></i>
+
+        <!-- Zona derecha: botón reserva + redes + menú móvil -->
+        <div class="flex items-center gap-2 md:gap-4">
+          <!-- Botón reserva -->
+          <a
+            href="../contacto.html"
+            class="nav-btn text-white px-5 py-2 rounded-full text-sm hover:bg-[#b59573] transition shadow-lg flex items-center"
+          >
+            <i class="fas fa-camera mr-2"></i>Reservar
+          </a>
+
+          <!-- Instagram -->
+          <a
+            href="https://www.instagram.com/elestudiodefelipe"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-10 h-10 bg-[#c9a87c]/10 rounded-full flex items-center justify-center text-xl text-[#c9a87c] hover:bg-[#c9a87c] hover:text-white transition"
+            aria-label="Instagram"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+
+          <!-- Facebook -->
+          <a
+            href="https://www.facebook.com/fotografiaelestudiodefelipe"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-10 h-10 bg-[#c9a87c]/10 rounded-full flex items-center justify-center text-xl text-[#c9a87c] hover:bg-[#c9a87c] hover:text-white transition"
+            aria-label="Facebook"
+          >
+            <i class="fab fa-facebook-f"></i>
+          </a>
+
+          <!-- Botón menú hamburguesa (móvil) -->
+          <button
+            id="menu-toggle"
+            class="md:hidden text-2xl cursor-pointer text-[#f0e4d5] focus:outline-none"
+            aria-label="Abrir menú"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
         </div>
+      </div>
+
+      <!-- Menú móvil desplegable (oculto por defecto) -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden absolute top-full left-0 w-full bg-[#2d2620] backdrop-blur-sm border-t border-[#e6c9a8]/20 py-4 px-6 shadow-xl"
+      >
+        <ul class="flex flex-col space-y-4">
+          <li>
+            <a
+              href="../home.html"
+              class="nav-link block hover:!text-[#e6c9a8] transition py-2"
+              >Inicio</a
+            >
+          </li>
+          <li>
+            <a
+              href="../servicios.html"
+              class="nav-link block hover:!text-[#e6c9a8] transition py-2"
+              >Servicios</a
+            >
+          </li>
+          <li>
+            <a
+              href="../galería.html"
+              class="nav-link block hover:!text-[#e6c9a8] transition py-2"
+              >Recuerdos</a
+            >
+          </li>
+          <li>
+            <a
+              href="../estudio.html"
+              class="nav-link block hover:!text-[#e6c9a8] transition py-2"
+              >Estudio</a
+            >
+          </li>
+          <li>
+            <a
+              href="../contacto.html"
+              class="nav-link block hover:!text-[#e6c9a8] transition py-2"
+              >Contacto</a
+            >
+          </li>
+          <li class="pt-2 border-t border-[#e6c9a8]/20">
+            <div class="flex gap-4">
+              <a
+                href="https://www.instagram.com/elestudiodefelipe"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[#e6c9a8] hover:text-white transition"
+                aria-label="Instagram"
+              >
+                <i class="fab fa-instagram text-2xl"></i>
+              </a>
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[#e6c9a8] hover:text-white transition"
+                aria-label="Facebook"
+              >
+                <i class="fab fa-facebook-f text-2xl"></i>
+              </a>
+            </div>
+          </li>
+        </ul>
       </div>
     </nav>
 
-    <main class="pt-24">
-      <!-- CABECERA -->
-      <section class="py-16 px-6 bg-[#fcf9f5] text-center">
-        <div class="max-w-4xl mx-auto reveal">
-          <span class="text-[#b59573] tracking-[0.3em] text-sm">RECUERDOS</span>
-          <h1 class="text-6xl md:text-7xl font-serif text-[#3e332b] mt-2">
-            Cuentos
-          </h1>
-          <div class="gold-line mx-auto"></div>
-          <p class="text-[#685e54] text-lg mt-6">
-            Donde la magia de la infancia se convierte en recuerdos eternos con
-            cada imagen.
+    <!-- Script para el menú móvil -->
+    <script>
+      (function () {
+        const menuToggle = document.getElementById("menu-toggle");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        if (menuToggle && mobileMenu) {
+          menuToggle.addEventListener("click", function () {
+            mobileMenu.classList.toggle("hidden");
+            // Cambiar icono entre bars y times (opcional)
+            const icon = this.querySelector("i");
+            if (icon.classList.contains("fa-bars")) {
+              icon.classList.remove("fa-bars");
+              icon.classList.add("fa-times");
+            } else {
+              icon.classList.remove("fa-times");
+              icon.classList.add("fa-bars");
+            }
+          });
+
+          // Cerrar menú al hacer clic en un enlace
+          mobileMenu.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", function () {
+              mobileMenu.classList.add("hidden");
+              const icon = menuToggle.querySelector("i");
+              icon.classList.remove("fa-times");
+              icon.classList.add("fa-bars");
+            });
+          });
+        }
+      })();
+    </script>
+
+    <main>
+      <!-- CARRUSEL AUTOMÁTICO EN LA CABECERA -->
+      <section class="hero-slider">
+        <!-- Slides -->
+        <div
+          class="slide active"
+          style="
+            background-image: url(&quot;../img/CuentosWeb/mary_poppins_techo_chicos.jpg&quot;);
+          "
+        ></div>
+        <div
+          class="slide"
+          style="
+            background-image: url(&quot;../img/CuentosWeb/niña_capa_roja.jpg&quot;);
+          "
+        ></div>
+        <div
+          class="slide"
+          style="
+            background-image: url(&quot;../img/CuentosWeb/blanca_nieves_niña_piña.jpg&quot;);
+          "
+        ></div>
+        <div
+          class="slide"
+          style="
+            background-image: url(&quot;../img/CuentosWeb/niño_sombrero_acordeon.jpg&quot;);
+          "
+        ></div>
+
+        <!-- Texto en la esquina inferior izquierda -->
+        <div class="hero-content">
+          <span class="text-[#e6c9a8] tracking-[0.3em] text-sm"
+            >HABÍA UNA VEZ...¡TÚ!</span
+          >
+          <h1 class="text-4xl md:text-5xl font-serif mt-2 mb-3">Cuentos</h1>
+          <div class="gold-line-light"></div>
+          <p class="text-base md:text-lg text-white/90 max-w-md mt-3">
+            Momentos de cuento que duran para siempre
           </p>
+        </div>
+
+        <!-- Indicadores (dots) -->
+        <div class="slider-dots">
+          <span class="dot active" onclick="currentSlide(0)"></span>
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
         </div>
       </section>
 
-      <!-- GALERÍA CON PATRÓN: 3 CUADRADAS + 1 ALARGADA + REPETIR -->
-      <section class="px-6 pb-20">
-        <div
-          class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[250px]"
-        >
-          <!-- Bloque 1: 3 cuadradas -->
-          <div class="md:col-span-4 grid-item img-zoom reveal">
-            <img
-              src="../img/IMG_0007.jpg"
-              alt="Cuento 1"
-              class="w-full h-full object-cover"
-            />
+      <!-- SECCIÓN: TEXTO DESCRIPTIVO SOBRE SESIONES DE CUENTOS -->
+      <section class="py-20 px-6 bg-[#fcf9f5]">
+        <div class="max-w-4xl mx-auto text-center reveal">
+          <h2 class="text-4xl md:text-5xl font-serif text-[#3e332b] mb-6">
+            Sesiones de cuentos en Cartagena: magia y fantasía para los más
+            pequeños
+          </h2>
+          <div class="gold-line mx-auto mb-8"></div>
+          <div class="text-left text-[#685e54] space-y-6 text-lg">
+            <p>
+              En <strong>El Estudio de Felipe</strong> convertimos los sueños de
+              los niños en realidad a través de nuestras sesiones de cuentos.
+              Creamos decorados especiales, con atrezo y vestuario cuidado al
+              detalle, para que la magia se sienta en cada fotografía.
+            </p>
+            <p>
+              Si buscas una
+              <strong>sesión temática infantil en Cartagena</strong>, nosotros
+              te ofrecemos atrezo profesional, vestuario y decorados
+              especialmente diseñados para cada cuento. Nuestro estudio se
+              transforma en el escenario perfecto para que la imaginación vuele.
+            </p>
+            <h3 class="text-2xl font-serif text-[#3e332b] mt-8 mb-4">
+              Lo que ofrecemos:
+            </h3>
+            <ul class="list-disc list-inside space-y-2">
+              <li>
+                <strong>Navidades de cuentos:</strong> Navidad en el mundo de
+                los cuentos.
+              </li>
+              <li>
+                <strong>Veranos de fantasía:</strong> marineros, hadas y todo lo
+                que se nos ocurra.
+              </li>
+              <li>
+                <strong>Sesiones especiales:</strong> cortas pero llenas de
+                fantasía.
+              </li>
+            </ul>
+            <p class="mt-8">
+              Nuestro estudio está en el
+              <strong>Barrio de la Concepción, en Cartagena</strong>.
+              <a
+                href="../contacto.html"
+                class="text-[#c9a87c] font-semibold underline"
+                >Reserva tu sesión de cuentos</a
+              >
+              y regala a tus hijos un recuerdo inolvidable.
+            </p>
           </div>
-          <div class="md:col-span-4 grid-item img-zoom reveal">
-            <img
-              src="https://images.pexels.com/photos/5857595/pexels-photo-5857595.jpeg?auto=compress&cs=tinysrgb&w=600"
-              alt="Cuento 2"
-              class="w-full h-full object-cover"
-            />
-          </div>
-          <div class="md:col-span-4 grid-item img-zoom reveal">
-            <img
-              src="https://images.pexels.com/photos/5857595/pexels-photo-5857595.jpeg?auto=compress&cs=tinysrgb&w=600"
-              alt="Cuento 3"
-              class="w-full h-full object-cover"
-            />
-          </div>
+        </div>
+      </section>
 
-          <!-- Bloque 2: 1 alargada (horizontal) -->
-          <div
-            class="md:col-span-12 grid-item img-zoom reveal row-span-1"
-            style="height: 300px"
-          >
-            <img
-              src="https://images.pexels.com/photos/5857595/pexels-photo-5857595.jpeg?auto=compress&cs=tinysrgb&w=1200"
-              alt="Cuento grupal"
-              class="w-full h-full object-cover"
-            />
-          </div>
+      <!-- GALERÍA TIPO COLLAGE -->
+      <section class="px-6 py-20">
+        <div class="max-w-7xl mx-auto">
+          <h2 class="text-4xl font-serif text-[#3e332b] mb-10 text-center">
+            Momentos que inspiran
+          </h2>
 
-          <!-- Bloque 3: 3 cuadradas -->
-          <div class="md:col-span-4 grid-item img-zoom reveal">
-            <img
-              src="https://images.pexels.com/photos/5857595/pexels-photo-5857595.jpeg?auto=compress&cs=tinysrgb&w=600"
-              alt="Cuento 4"
-              class="w-full h-full object-cover"
-            />
-          </div>
-          <div class="md:col-span-4 grid-item img-zoom reveal">
-            <img
-              src="https://images.pexels.com/photos/5857595/pexels-photo-5857595.jpeg?auto=compress&cs=tinysrgb&w=600"
-              alt="Cuento 5"
-              class="w-full h-full object-cover"
-            />
-          </div>
-          <div class="md:col-span-4 grid-item img-zoom reveal">
-            <img
-              src="https://images.pexels.com/photos/5857595/pexels-photo-5857595.jpeg?auto=compress&cs=tinysrgb&w=600"
-              alt="Cuento 6"
-              class="w-full h-full object-cover"
-            />
-          </div>
-
-          <!-- Bloque 4: 1 alargada -->
-          <div
-            class="md:col-span-12 grid-item img-zoom reveal row-span-1"
-            style="height: 300px"
-          >
-            <img
-              src="https://images.pexels.com/photos/5857595/pexels-photo-5857595.jpeg?auto=compress&cs=tinysrgb&w=1200"
-              alt="Cuento grupo 2"
-              class="w-full h-full object-cover"
-            />
-          </div>
-
-          <!-- Bloque 5: 3 cuadradas -->
-          <div class="md:col-span-4 grid-item img-zoom reveal">
-            <img
-              src="https://images.pexels.com/photos/5857595/pexels-photo-5857595.jpeg?auto=compress&cs=tinysrgb&w=600"
-              alt="Cuento 7"
-              class="w-full h-full object-cover"
-            />
-          </div>
-          <div class="md:col-span-4 grid-item img-zoom reveal">
-            <img
-              src="https://images.pexels.com/photos/5857595/pexels-photo-5857595.jpeg?auto=compress&cs=tinysrgb&w=600"
-              alt="Cuento 8"
-              class="w-full h-full object-cover"
-            />
-          </div>
-          <div class="md:col-span-4 grid-item img-zoom reveal">
-            <img
-              src="https://images.pexels.com/photos/5857595/pexels-photo-5857595.jpeg?auto=compress&cs=tinysrgb&w=600"
-              alt="Cuento 9"
-              class="w-full h-full object-cover"
-            />
-          </div>
-
-          <!-- Bloque 6: 1 alargada final -->
-          <div
-            class="md:col-span-12 grid-item img-zoom reveal row-span-1"
-            style="height: 300px"
-          >
-            <img
-              src="https://images.pexels.com/photos/5857595/pexels-photo-5857595.jpeg?auto=compress&cs=tinysrgb&w=1200"
-              alt="Cuento final"
-              class="w-full h-full object-cover"
-            />
+          <div class="gallery-grid">
+            <!-- 1 -->
+            <div class="gallery-item fade-scale" style="animation-delay: 0.05s">
+              <img
+                src="../img/CuentosWeb/blanca_nieves_niña_bosque.jpg"
+                alt="Sesión de Blancanieves en Cartagena - Estudio Felipe"
+              />
+            </div>
+            <!-- 2 -->
+            <div class="gallery-item fade-scale" style="animation-delay: 0.1s">
+              <img
+                src="../img/CuentosWeb/hermanos_galletas_jengibre.jpg"
+                alt="Sesión de cuento con galletas de jengibre - Estudio Felipe"
+              />
+            </div>
+            <!-- 3 (wide) -->
+            <div
+              class="gallery-item wide fade-scale"
+              style="animation-delay: 0.15s"
+            >
+              <img
+                src="../img/CuentosWeb/mary_poppins_chicos_chimenea.jpg"
+                alt="Sesión de Mary Poppins en chimenea - Estudio Felipe"
+              />
+            </div>
+            <!-- 4 -->
+            <div
+              class="gallery-item tall fade-scale"
+              style="animation-delay: 0.2s"
+            >
+              <img
+                src="../img/CuentosWeb/caperucita_lobo_bosque.jpg"
+                alt="Caperucita y el lobo en el bosque - Estudio Felipe"
+              />
+            </div>
+            <!-- 5 (tall) -->
+            <div
+              class="gallery-item tall fade-scale"
+              style="animation-delay: 0.25s"
+            >
+              <img
+                src="../img/CuentosWeb/mary_poppins_paraguas.jpg"
+                alt="Mary Poppins con paraguas - Estudio Felipe"
+              />
+            </div>
+            <!-- 6 -->
+            <div
+              class="gallery-item wide fade-scale"
+              style="animation-delay: 0.3s"
+            >
+              <img
+                src="../img/CuentosWeb/chica_violin_tumbada.jpg"
+                alt="Sesión de cuento con violín - Estudio Felipe"
+              />
+            </div>
+            <!-- 7 (big) -->
+            <div
+              class="gallery-item big fade-scale"
+              style="animation-delay: 0.35s"
+            >
+              <img
+                src="../img/CuentosWeb/4campanilla&peter2_cuento_fotografia.jpg"
+                alt="Campanilla y Peter Pan - Sesión de cuentos en Cartagena"
+              />
+            </div>
+            <!-- 8 -->
+            <div
+              class="gallery-item tall fade-scale"
+              style="animation-delay: 0.4s"
+            >
+              <img
+                src="../img/CuentosWeb/geppetto_pinocho_taller.jpg"
+                alt="Geppetto y Pinocho en el taller - Estudio Felipe"
+              />
+            </div>
+            <!-- 9 (wide) -->
+            <div
+              class="gallery-item tall fade-scale"
+              style="animation-delay: 0.45s"
+            >
+              <img
+                src="../img/CuentosWeb/8pulgarcito2_fotografia_cuento.jpg"
+                alt="Pulgarcito - Sesión de cuentos"
+              />
+            </div>
+            <!-- 10 -->
+            <div class="gallery-item fade-scale" style="animation-delay: 0.5s">
+              <img
+                src="../img/CuentosWeb/7ratitapresumida3_cuento_fotografia.jpg"
+                alt="Ratita presumida - Sesión de cuentos"
+              />
+            </div>
+            <!-- 11 (tall) -->
+            <div
+              class="gallery-item tall fade-scale"
+              style="animation-delay: 0.55s"
+            >
+              <img
+                src="../img/CuentosWeb/mary_poppins_instrumentos.jpg"
+                alt="Mary Poppins con instrumentos - Estudio Felipe"
+              />
+            </div>
+            <!-- 12 -->
+            <div class="gallery-item fade-scale" style="animation-delay: 0.6s">
+              <img
+                src="../img/CuentosWeb/hada_pinocho_taller.jpg"
+                alt="Hada de Pinocho - Sesión de cuentos"
+              />
+            </div>
+            <!-- 13 (wide) - placeholder -->
+            <div
+              class="gallery-item wide fade-scale"
+              style="animation-delay: 0.65s"
+            >
+              <img
+                src="../img/CuentosWeb/chica_sombrero_luna.jpg"
+                alt="Chica con sombrero y luna - Sesión de cuentos"
+              />
+            </div>
+            <!-- 14 -->
+            <div
+              class="gallery-item tall fade-scale"
+              style="animation-delay: 0.7s"
+            >
+              <img
+                src="../img/CuentosWeb/4campanilla&peter3_cuento_fotografia.jpg"
+                alt="Campanilla y Peter Pan volando"
+              />
+            </div>
+            <!-- 15 (tall) -->
+            <div
+              class="gallery-item tall fade-scale"
+              style="animation-delay: 0.75s"
+            >
+              <img
+                src="../img/CuentosWeb/6cascanueces3_cuento_fotografia.jpg"
+                alt="Cascanueces - Sesión de cuentos"
+              />
+            </div>
+            <!-- 16 -->
+            <div
+              class="gallery-item wide fade-scale"
+              style="animation-delay: 0.8s"
+            >
+              <img
+                src="../img/CuentosWeb/8pulgarcito3_fotografia_cuento.jpg"
+                alt="Pulgarcito - Sesión de cuentos"
+              />
+            </div>
+            <!-- 17 (wide) -->
+            <div
+              class="gallery-item wide fade-scale"
+              style="animation-delay: 0.85s"
+            >
+              <img
+                src="../img/CuentosWeb/niños_mary_poppins_chimenea.jpg"
+                alt="Niños con Mary Poppins en chimenea"
+              />
+            </div>
+            <!-- 18 -->
+            <div
+              class="gallery-item tall fade-scale"
+              style="animation-delay: 0.9s"
+            >
+              <img
+                src="../img/CuentosWeb/237A4754.jpg"
+                alt="Sesión de cuentos - Estudio Felipe"
+              />
+            </div>
+            <!-- 19 (tall) -->
+            <div
+              class="gallery-item tall fade-scale"
+              style="animation-delay: 0.95s"
+            >
+              <img
+                src="../img/CuentosWeb/2E5A4664-2.jpg"
+                alt="Sesión de cuentos - Detalle"
+              />
+            </div>
+            <!-- 20 -->
+            <div
+              class="gallery-item wide fade-scale"
+              style="animation-delay: 1s"
+            >
+              <img
+                src="../img/CuentosWeb/237A0059.jpg"
+                alt="Sesión de cuentos - Estudio Felipe"
+              />
+            </div>
+            <!-- 21 (big) -->
+            <div
+              class="gallery-item big fade-scale"
+              style="animation-delay: 1.05s"
+            >
+              <img
+                src="../img/CuentosWeb/niño_gnomo_sentado_bosque_Setas.jpg"
+                alt="Niño gnomo en bosque de setas - Sesión de cuentos"
+              />
+            </div>
+            <!-- 22 -->
+            <div
+              class="gallery-item wide fade-scale"
+              style="animation-delay: 1.1s"
+            >
+              <img
+                src="../img/CuentosWeb/5cuento_navidad3_fotografia.jpg"
+                alt="Sesión de cuento de Navidad"
+              />
+            </div>
+            <!-- 23 (wide) -->
+            <div
+              class="gallery-item wide fade-scale"
+              style="animation-delay: 1.15s"
+            >
+              <img
+                src="../img/CuentosWeb/mary_poppins_entre_nubes.jpg"
+                alt="Mary Poppins entre nubes"
+              />
+            </div>
+            <!-- 24 -->
+            <div
+              class="gallery-item tall fade-scale"
+              style="animation-delay: 1.2s"
+            >
+              <img
+                src="../img/CuentosWeb/niña_fondo_azul_luna.jpg"
+                alt="Niña con fondo de luna - Sesión de cuentos"
+              />
+            </div>
+            <!-- 25 (tall) -->
+            <div
+              class="gallery-item tall fade-scale"
+              style="animation-delay: 1.25s"
+            >
+              <img
+                src="../img/CuentosWeb/pinocho_niña_sentada_gato_taller.jpg"
+                alt="Pinocho con niña y gato en taller"
+              />
+            </div>
+            <!-- 27 (wide) -->
+            <div
+              class="gallery-item big fade-scale"
+              style="animation-delay: 1.35s"
+            >
+              <img
+                src="../img/CuentosWeb/niña_vestido_azul_ballet_carruaje.jpg"
+                alt="Niña con vestido azul en carruaje - Sesión de cuentos"
+              />
+            </div>
+            <!-- 28 -->
+            <div
+              class="gallery-item tall fade-scale"
+              style="animation-delay: 1.4s"
+            >
+              <img
+                src="../img/CuentosWeb/mary_poppins_cuadro_fondo_rayas.jpg"
+                alt="Mary Poppins con fondo de rayas"
+              />
+            </div>
+            <!-- 29 (tall) -->
+            <div
+              class="gallery-item tall fade-scale"
+              style="animation-delay: 1.45s"
+            >
+              <img
+                src="../img/CuentosWeb/6cascanueces4_cuento_fotografia.jpg"
+                alt="Cascanueces - Sesión de cuentos"
+              />
+            </div>
+            <!-- 30 -->
+            <div
+              class="gallery-item tall fade-scale"
+              style="animation-delay: 1.5s"
+            >
+              <img
+                src="../img/CuentosWeb/6cascanueces2_cuento_fotografia.jpg"
+                alt="Cascanueces - Sesión de cuentos"
+              />
+            </div>
+            <!-- 31 (wide) -->
+            <div
+              class="gallery-item tall fade-scale"
+              style="animation-delay: 1.55s"
+            >
+              <img
+                src="../img/CuentosWeb/7ratitapresumida_cuento_fotografia.jpg"
+                alt="Ratita presumida - Sesión de cuentos"
+              />
+            </div>
+            <!-- 21 (big) -->
+            <div
+              class="gallery-item big fade-scale"
+              style="animation-delay: 1.05s"
+            >
+              <img
+                src="../img/CuentosWeb/hermanos_caramelo.jpg"
+                alt="Hermanos con caramelos - Sesión de cuentos"
+              />
+            </div>
+            <!-- 22 -->
+            <div
+              class="gallery-item tall fade-scale"
+              style="animation-delay: 1.1s"
+            >
+              <img
+                src="../img/CuentosWeb/hermanos_sentados_niños_luna.jpg"
+                alt="Hermanos sentados con luna - Sesión de cuentos"
+              />
+            </div>
+            <!-- 23 (wide) -->
+            <div
+              class="gallery-item tall fade-scale"
+              style="animation-delay: 1.15s"
+            >
+              <img
+                src="../img/CuentosWeb/hermanos_jengibre_baston_caramelo.jpg"
+                alt="Hermanos con galletas de jengibre"
+              />
+            </div>
+            <div
+              class="gallery-item wide fade-scale"
+              style="animation-delay: 1.15s"
+            >
+              <img
+                src="../img/CuentosWeb/8pulgarcito_fotografia_cuento.jpg"
+                alt="Pulgarcito - Sesión de cuentos"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -287,21 +883,21 @@
         EL ESTUDIO DE FELIPE · CARTAGENA · REGIÓN DE MURCIA · ©2026
       </p>
       <p class="text-xs mt-2 text-[#8b755e]">
-        Una historia familiar desde 2007
+        Una historia familiar desde 2007 · Fotógrafos en Cartagena
       </p>
       <div class="flex justify-center gap-6 mt-4 text-sm">
         <a
-          href="aviso-legal.html"
+          href="../aviso-legal.html"
           class="text-[#8b755e] hover:text-[#c9a87c] transition"
           >Aviso Legal</a
         >
         <a
-          href="política-privacidad.html"
+          href="../politica-privacidad.html"
           class="text-[#8b755e] hover:text-[#c9a87c] transition"
           >Política de Privacidad</a
         >
         <a
-          href="política-cookies.html"
+          href="../politica-cookies.html"
           class="text-[#8b755e] hover:text-[#c9a87c] transition"
           >Política de Cookies</a
         >
@@ -309,28 +905,70 @@
     </footer>
 
     <script>
-      (function () {
-        const navbar = document.getElementById("navbar");
-        window.addEventListener("scroll", function () {
-          if (window.scrollY > 80) {
-            navbar.classList.add("nav-scrolled");
-            navbar.classList.remove("navbar-base");
-          } else {
-            navbar.classList.remove("nav-scrolled");
-            navbar.classList.add("navbar-base");
-          }
+      // SLIDER AUTOMÁTICO
+      let slides = document.querySelectorAll(".slide");
+      let dots = document.querySelectorAll(".dot");
+      let currentIndex = 0;
+      let interval;
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle("active", i === index);
+          dots[i].classList.toggle("active", i === index);
         });
-        const reveals = document.querySelectorAll(".reveal");
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) entry.target.classList.add("active");
-            });
-          },
-          { threshold: 0.2 },
-        );
-        reveals.forEach((r) => observer.observe(r));
-      })();
+      }
+
+      function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        showSlide(currentIndex);
+      }
+
+      function currentSlide(index) {
+        currentIndex = index;
+        showSlide(currentIndex);
+        resetInterval();
+      }
+
+      function resetInterval() {
+        clearInterval(interval);
+        interval = setInterval(nextSlide, 5000);
+      }
+
+      if (slides.length > 0) {
+        interval = setInterval(nextSlide, 5000);
+      }
+
+      dots.forEach((dot, idx) => {
+        dot.addEventListener("click", () => currentSlide(idx));
+      });
+
+      // Navbar scroll
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", function () {
+        if (window.scrollY > 80) {
+          navbar.classList.add("nav-scrolled");
+          navbar.classList.remove("navbar-base");
+        } else {
+          navbar.classList.remove("nav-scrolled");
+          navbar.classList.add("navbar-base");
+        }
+      });
+
+      // Observer para animaciones de entrada
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = "1";
+            }
+          });
+        },
+        { threshold: 0.2 },
+      );
+
+      document.querySelectorAll(".fade-scale").forEach((el) => {
+        observer.observe(el);
+      });
     </script>
   </body>
 </html>

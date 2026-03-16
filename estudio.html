@@ -3,27 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Estudio Felipe · Nuestra historia</title>
+    <meta
+      name="description"
+      content="Descubre la historia de El Estudio de Felipe, un estudio de fotografía familiar en Cartagena con más de 15 años de experiencia. Te presentamos a Mª Ángeles y su equipo."
+    />
+    <title>
+      Conoce a los Fotógrafos de El Estudio de Felipe | Historia y Equipo |
+      Cartagena
+    </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Montserrat:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
     <style>
+      @font-face {
+        font-family: "MiBebas";
+        src: url("fonts/BebasNeue-Regular.woff2") format("woff2");
+        font-weight: normal;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Shree Devanagari 714";
+        src:
+          url("fonts/ShreeDev0714.woff2") format("woff2"),
+          url("fonts/ShreeDev0714.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
       * {
         font-family:
-          "Montserrat", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-          "Lucida Sans", Arial, sans-serif;
+          "Shree Devanagari 714", "Segoe UI", "Times New Roman", Times, serif;
       }
+
       h1,
       h2,
       h3,
       .font-serif {
-        font-family: "Montserrat", sans-serif;
+        font-family: "MiBebas", "Shree Devanagari 714", serif !important;
       }
       body {
         background-color: #fcf9f5;
@@ -101,13 +120,16 @@
       class="fixed w-full z-50 transition-all duration-500 navbar-base py-3 md:py-4"
     >
       <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        <!-- Logo -->
         <a href="home.html" class="flex items-center">
           <img
             src="img/sombrero.png"
-            alt="EstudioFelipe"
+            alt="El Estudio de Felipe - Fotógrafos en Cartagena"
             class="h-10 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition"
           />
         </a>
+
+        <!-- Menú de navegación (escritorio) -->
         <ul class="hidden md:flex space-x-8">
           <li>
             <a
@@ -145,17 +167,46 @@
             >
           </li>
         </ul>
-        <a
-          href="contacto.html"
-          class="hidden md:inline-block nav-btn text-white px-5 py-2 rounded-full text-sm hover:bg-[#b59573] transition shadow-lg"
-          ><i class="fas fa-camera mr-2"></i>Reservar</a
-        >
-        <div class="md:hidden text-2xl cursor-pointer text-[#f0e4d5]">
-          <i class="fas fa-bars"></i>
+
+        <!-- Zona derecha: botón reserva + redes + menú móvil -->
+        <div class="flex items-center gap-2 md:gap-4">
+          <!-- Botón reserva -->
+          <a
+            href="contacto.html"
+            class="nav-btn text-white px-5 py-2 rounded-full text-sm hover:bg-[#b59573] transition shadow-lg flex items-center"
+          >
+            <i class="fas fa-camera mr-2"></i>Reservar
+          </a>
+
+          <!-- Instagram -->
+          <a
+            href="https://www.instagram.com/elestudiodefelipe"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-10 h-10 bg-[#c9a87c]/10 rounded-full flex items-center justify-center text-xl text-[#c9a87c] hover:bg-[#c9a87c] hover:text-white transition"
+            aria-label="Instagram"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+
+          <!-- Facebook -->
+          <a
+            href="https://www.facebook.com/fotografiaelestudiodefelipe"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-10 h-10 bg-[#c9a87c]/10 rounded-full flex items-center justify-center text-xl text-[#c9a87c] hover:bg-[#c9a87c] hover:text-white transition"
+            aria-label="Facebook"
+          >
+            <i class="fab fa-facebook-f"></i>
+          </a>
+
+          <!-- Menú hamburguesa (móvil) -->
+          <div class="md:hidden text-2xl cursor-pointer text-[#f0e4d5]">
+            <i class="fas fa-bars"></i>
+          </div>
         </div>
       </div>
     </nav>
-
     <main class="pt-24">
       <!-- SECCIÓN HERO: TÍTULO -->
       <section class="relative py-20 px-6 bg-[#2d2620] overflow-hidden">
@@ -172,7 +223,7 @@
             >NUESTRA HISTORIA</span
           >
           <h1 class="text-6xl md:text-7xl font-serif mt-4 mb-6 reveal">
-            Estudio Felipe
+            El Estudio de Felipe
           </h1>
           <div class="gold-line mx-auto"></div>
           <p class="text-xl text-[#e3d6ca] max-w-2xl mx-auto reveal">
@@ -195,7 +246,7 @@
                     class="w-16 h-16 rounded-full overflow-hidden border-2 border-[#c9a87c]"
                   >
                     <img
-                      src="img/2E5A9740neon.jpg"
+                      src="img/foto_neon_mujer_azul.jpg"
                       alt="M Ángeles"
                       class="w-full h-full object-cover"
                     />
@@ -211,17 +262,31 @@
                 </div>
 
                 <!-- TEXTO PERSONAL -->
-                <p class="text-[#5b4f46] text-lg leading-relaxed mb-6">
-                  Soy M Ángeles, fotógrafa de El Estudio de Felipe. Mi empresa
-                  empezó junto a mis padres, ya que Felipe, mi padre, era y es
-                  fotógrafo por vocación y yo informática. Dimos juntos el salto
-                  del carrete analógico al mundo digital y montamos la empresa
-                  en 2007.
+                <h1>Nuestra historia: de padre a hija, con la misma pasión</h1>
+
+                <p>
+                  Estudio Felipe nació en 2007 de la mano de Felipe, fotógrafo
+                  de vocación, y su hija Mª Ángeles, informática. Juntos dieron
+                  el salto del carrete analógico al mundo digital, creando un
+                  espacio único en Cartagena donde la técnica y el cariño se
+                  combinan para ofrecerte lo mejor de la fotografía familiar.
                 </p>
-                <p class="text-[#5b4f46] text-lg leading-relaxed mb-8">
-                  En la actualidad ellos están jubilados, pero me hacen mucha
-                  compañía porque les encanta estar en el Estudio.
+
+                <p>
+                  Hoy, Mª Ángeles dirige el estudio, pero Felipe sigue siendo un
+                  apoyo fundamental, siempre presente. Porque esto es más que un
+                  negocio: es una historia de familia.
                 </p>
+
+                <h2>
+                  ¿Por qué confiar en nosotros para tus fotos en Cartagena?
+                </h2>
+                <ul>
+                  <li>Más de 15 años de experiencia.</li>
+                  <li>Especialistas en fotografía infantil y familiar.</li>
+                  <li>Trato cercano y personalizado.</li>
+                  <li>Estudio equipado con luz natural y artificial.</li>
+                </ul>
 
                 <!-- FIRMA -->
                 <div class="border-t border-[#e1cfbc] pt-6 mt-4">
@@ -247,7 +312,7 @@
                 class="flex gap-6 mt-8 justify-center md:justify-start reveal"
               >
                 <a
-                  href="#"
+                  href="https://www.instagram.com/elestudiodefelipe"
                   class="w-12 h-12 bg-[#c9a87c]/10 rounded-full flex items-center justify-center text-2xl text-[#c9a87c] hover:bg-[#c9a87c] hover:text-white transition"
                 >
                   <i class="fab fa-instagram"></i>
@@ -258,12 +323,6 @@
                 >
                   <i class="fab fa-facebook-f"></i>
                 </a>
-                <a
-                  href="#"
-                  class="w-12 h-12 bg-[#c9a87c]/10 rounded-full flex items-center justify-center text-2xl text-[#c9a87c] hover:bg-[#c9a87c] hover:text-white transition"
-                >
-                  <i class="fab fa-pinterest"></i>
-                </a>
               </div>
             </div>
 
@@ -272,28 +331,17 @@
               <div class="relative img-zoom">
                 <!-- IMAGEN PRINCIPAL (cambia la ruta por tu foto favorita del estudio) -->
                 <img
-                  src="img/2E5A9740neon.jpg"
+                  src="img/foto_neon_mujer_azul.jpg"
                   alt="Familia en el estudio"
                   class="w-full h-[600px] object-cover featured-image"
                 />
-
-                <!-- ETIQUETA FLOTANTE (opcional, puedes eliminarla) -->
-                <div
-                  class="absolute bottom-6 left-6 bg-white/90 backdrop-blur-sm px-6 py-3 rounded-full shadow-xl"
-                >
-                  <span
-                    class="text-[#b59573] font-semibold flex items-center gap-2"
-                  >
-                    <i class="fas fa-camera"></i> Tres generaciones
-                  </span>
-                </div>
               </div>
-
-              <!-- PIE DE FOTO (opcional) -->
-              <p class="text-center text-[#8b755e] mt-4 text-sm">
-                Felipe, M Ángeles y el estudio que construyeron juntos
-              </p>
             </div>
+
+            <!-- PIE DE FOTO (opcional) -->
+            <p class="text-center text-[#8b755e] mt-4 text-sm">
+              Felipe, M Ángeles y el estudio que construyeron juntos
+            </p>
           </div>
         </div>
       </section>
@@ -324,19 +372,18 @@
               </p>
             </div>
 
-            <!-- 2015 -->
+            <!-- 2016 -->
             <div
               class="bg-white/80 backdrop-blur-sm p-8 rounded-3xl shadow-xl text-center reveal"
             >
               <div
                 class="w-16 h-16 bg-[#c9a87c] rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4"
               >
-                2015
+                2016
               </div>
               <h3 class="font-serif text-2xl mb-2">Nuevo estudio</h3>
               <p class="text-[#5b4f46]">
-                Abrimos nuestras puertas en Cartagena, un espacio con alma
-                propia.
+                Abrimos un nuevo estudio en Cartagena.
               </p>
             </div>
 

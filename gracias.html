@@ -9,18 +9,28 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap"
-      rel="stylesheet"
-    />
+
     <style>
-      * {
-        font-family: "Inter", sans-serif;
+      @font-face {
+        font-family: "Shree Devanagari 714";
+        src:
+          url("fonts/ShreeDev0714.woff2") format("woff2"),
+          url("fonts/ShreeDev0714.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
       }
+
+      * {
+        font-family:
+          "Shree Devanagari 714", "Segoe UI", "Times New Roman", Times, serif;
+      }
+
       h1,
       h2,
+      h3,
       .font-serif {
-        font-family: "Playfair Display", serif;
+        font-family: "Shree Devanagari 714", "Times New Roman", Times, serif;
       }
       body {
         background-color: #fcf9f5;
